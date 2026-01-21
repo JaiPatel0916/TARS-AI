@@ -5,6 +5,7 @@ import { Card, CardHeader, CardContent } from "../components/Card";
 import Navbar from "../components/Navbar";
 
 import Footer from "../components/Footer";
+import CoreServices from "../components/CoreServices";
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
       <Section />
       <Card />
       <StickyScrollRevealDemo />
+      <CoreServices />
       <Footer/>
     </div>
   );
