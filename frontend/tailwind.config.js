@@ -1,5 +1,7 @@
 export default {
-  darkMode:"class",
+
+  darkMode: "class", // 🔥 THIS WAS MISSING
+
   content: [
     
     "./index.html",
@@ -10,4 +12,4 @@ export default {
     extend: {},
   },
   plugins: [],
-}
+};
