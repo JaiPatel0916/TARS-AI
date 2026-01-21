@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react'
+import { useTheme } from '../context/ThemeProvider'
 
 const ChevronDown = () => (
   <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -34,48 +35,8 @@ const Navbar = () => {
   const servicesRef = useRef(null)
   const productRef = useRef(null)
 
-  // Local theme state (no context)
-  const [theme, setTheme] = useState('dark')
-  const isMounted = useRef(true)
-
-  useEffect(() => {
-    isMounted.current = true
-    return () => { isMounted.current = false }
-  }, [])
-
-  useEffect(() => {
-    try {
-      if (typeof window !== 'undefined' && window.localStorage) {
-        const saved = localStorage.getItem('theme')
-        if (saved) {
-          if (isMounted.current)setTheme(saved)
-          if (saved === 'dark') document.documentElement.classList.add('dark')
-          else document.documentElement.classList.remove('dark')
-          return
-        }
-
-        if (window.matchMedia) {
-          const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-          const initial = prefersDark ? 'dark' : 'light'
-          if (isMounted.current) setTheme(initial)
-          if (initial === 'dark') document.documentElement.classList.add('dark')
-          else document.documentElement.classList.remove('dark')
-        }
-      }
-    } catch (e) {
-      console.warn('Theme init failed', e)
-    }
-  }, [])
-
-  const toggleTheme = () => {
-    const next = theme === 'dark' ? 'light' : 'dark'
-    if (isMounted.current) setTheme(next)
-    if (typeof document !== 'undefined') {
-      if (next === 'dark') document.documentElement.classList.add('dark')
-      else document.documentElement.classList.remove('dark')
-    }
-    try { if (typeof window !== 'undefined' && window.localStorage) localStorage.setItem('theme', next) } catch (e) {}
-  }
+  // Use global theme from context
+  const { theme, toggleTheme } = useTheme()
 
 
   useEffect(() => {
@@ -99,26 +60,23 @@ const Navbar = () => {
   }, [])
 
   return (
-    <nav className={`${theme === 'dark' ? 'bg-[#0c0c0c]' : 'bg-white'} w-full sticky top-0 z-50 shadow-sm`}>
-      <div className="container mx-auto px-4 h-20 flex items-center justify-between">
+    <nav className={`${theme === 'dark' ? "bg-gradient-to-r from-purple-1000 via-[#220e3b] to-purple-1000"
+      : "bg-white"} w-full sticky top-0 z-50 shadow-sm`}>
+      <div className="container mx-auto px-2 sm:px-4 h-16 sm:h-20 flex items-center justify-between">
         {/* Logo */}
-        <div className="flex items-center ml-4 lg:ml-20 h-full">
-          <img src="/logo.png" alt="Tars.Ai Logo" className="h-20 w-20 lg:h-24 lg:w-24 object-contain max-h-full" />
+        <div className="flex items-center ml-1 sm:ml-4 lg:ml-20 h-full">
+          <img src="/logo.png" alt="Tars.Ai Logo" className="h-12 w-12 sm:h-20 sm:w-20 lg:h-24 lg:w-24 object-contain max-h-full" />
           {/* <span className="text-white text-xl font-semibold">Tars.Ai</span> */}
         </div> 
 
         {/* Hamburger Menu Button */}
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className={`lg:hidden p-2 focus:outline-none ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`}
+          className={`lg:hidden p-1.5 sm:p-2 focus:outline-none ${theme === 'dark' ? 'text-white' : 'text-gray-800'} mr-1 sm:mr-0`}
           aria-label="Toggle menu"
         >
-          <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            {mobileMenuOpen ? (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            ) : (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            )}
+          <svg className="h-7 w-7 sm:h-6 sm:w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
           </svg>
         </button>
 
@@ -126,7 +84,7 @@ const Navbar = () => {
         <div className="hidden lg:flex items-center gap-12 absolute left-1/2 transform -translate-x-1/2">
 
         {/* Home */}
-<a href="#" className={`transition-colors ${theme === 'dark' ? 'text-gray-300 hover:text-white' : 'text-gray-800 hover:text-black'}`}>
+           <a href="#" className={`transition-colors ${theme === 'dark' ? 'text-gray-300 hover:text-white' : 'text-gray-800 hover:text-black'}`}>
         Home
         </a>
 
@@ -380,6 +338,18 @@ const Navbar = () => {
           {/* Side Drawer (Left) */}
           <div className={`fixed top-0 left-0 h-full w-80 ${theme === 'dark' ? 'bg-[#0c0c0c]' : 'bg-white'} z-50 lg:hidden overflow-y-auto transform transition-transform duration-300 ease-in-out`}>
             <div className="px-6 py-6 space-y-4">
+              {/* Close Button */}
+              <div className="flex justify-end mb-2">
+                <button
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`p-2 rounded-lg ${theme === 'dark' ? 'text-white hover:bg-gray-800' : 'text-gray-800 hover:bg-gray-100'} focus:outline-none`}
+                  aria-label="Close menu"
+                >
+                  <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
 
 
               <a href="#" className={`block py-3 text-lg ${theme === 'dark' ? 'text-gray-300 hover:text-white' : 'text-gray-800 hover:text-black'}`}>Home</a>
