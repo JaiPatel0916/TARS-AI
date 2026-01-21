@@ -1,12 +1,8 @@
 export function Card({ children, className }) {
   return (
-
-    <div>
-
     <div
-     
-    >
 
+    >
       {/* Subtle Purple Glow */}
       <div className="absolute inset-0 bg-purple-900/10 blur-[120px] -z-10"></div>
 
