@@ -1,6 +1,9 @@
 import React from 'react'
+import { useTheme } from '../context/ThemeProvider'
 
 const Footer = () => {
+  const { theme } = useTheme()
+  
   return (
     <footer className="bg-white text-gray-900 dark:bg-[#0c0c0c] dark:text-white transition-colors duration-150">
       <div className="container mx-auto px-3 sm:px-6 lg:px-12 py-8 sm:py-12 lg:py-16">
@@ -12,7 +15,7 @@ const Footer = () => {
           
           {/* Heading + Buttons */}
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 sm:gap-6">
-            <h2 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-indigo-600 via-purple-500 to-pink-500 bg-clip-text text-transparent leading-tight flex-1">
+            <h2 className="text-lg sm:text-2xl md:text-3xl  lg:text-4xl font-bold bg-gradient-to-r from-indigo-600 via-purple-500 to-pink-500 bg-clip-text text-transparent leading-tight flex-1">
               Ready to Build Intelligent, Sustainable &amp; Secure AI Systems?
             </h2>
             
