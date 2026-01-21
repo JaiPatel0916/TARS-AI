@@ -1,5 +1,7 @@
 import Section from "../components/Section";
 import { Card, CardHeader, CardContent } from "../components/Card";
+import Navbar from "../components/Navbar";
+import StickyScrollRevealDemo from "../components/StickyScrollRevealDemo";
 
 export default function Home() {
   return (
