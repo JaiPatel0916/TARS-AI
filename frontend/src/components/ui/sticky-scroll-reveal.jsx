@@ -49,7 +49,7 @@ export function StickyScroll({ content = [] }) {
         >
             <div className="mx-auto max-w-7xl px-6">
                 {/* SECTION HEADING */}
-                <div className="mt-20 mb-16 text-center">
+                <div className="pt-12 mb-16 text-center">
                     <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100">
                         Key Capabilities
                     </h2>
@@ -57,6 +57,7 @@ export function StickyScroll({ content = [] }) {
                         Transforming operations through intelligent automation and real-time insights.
                     </p>
                 </div>
+
 
 
 
