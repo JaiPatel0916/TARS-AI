@@ -1,10 +1,30 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
+
 
 export function StickyScroll({ content = [] }) {
     if (!content.length) return null;
 
     const ref = useRef(null);
+    const [isDark, setIsDark] = useState(false);
+
+    useEffect(() => {
+        const html = document.documentElement;
+
+        // initial value
+        setIsDark(html.classList.contains("dark"));
+
+        const observer = new MutationObserver(() => {
+            setIsDark(html.classList.contains("dark"));
+        });
+
+        observer.observe(html, {
+            attributes: true,
+            attributeFilter: ["class"],
+        });
+
+        return () => observer.disconnect();
+    }, []);
 
     const { scrollYProgress } = useScroll({
         target: ref,
@@ -15,8 +35,11 @@ export function StickyScroll({ content = [] }) {
     const backgroundColor = useTransform(
         scrollYProgress,
         content.map((_, i) => i / (content.length - 1)),
-        content.map((item) => item.bgColor)
+        content.map((item) =>
+            isDark ? item.bgColor.dark : item.bgColor.light
+        )
     );
+
 
     return (
         <motion.section
@@ -26,14 +49,16 @@ export function StickyScroll({ content = [] }) {
         >
             <div className="mx-auto max-w-7xl px-6">
                 {/* SECTION HEADING */}
-                <div className=" mb-16 text-center">
-                    <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+                <div className="mt-20 mb-16 text-center">
+                    <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100">
                         Key Capabilities
                     </h2>
-                    <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
+                    <p className="mt-4 text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
                         Transforming operations through intelligent automation and real-time insights.
                     </p>
                 </div>
+
+
 
                 <div className="flex flex-col lg:flex-row gap-12">
 
@@ -48,12 +73,14 @@ export function StickyScroll({ content = [] }) {
                                 <div className="hidden lg:block h-[20vh]" />
 
                                 <div className="py-20">
-                                    <h2 className="text-3xl md:text-4xl font-bold mb-6">
+                                    <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900 dark:text-gray-100">
                                         {item.title}
                                     </h2>
-                                    <p className="text-gray-700 max-w-xl leading-relaxed text-justify">
+
+                                    <p className="text-gray-700 dark:text-gray-200 max-w-xl leading-relaxed text-justify">
                                         {item.description}
                                     </p>
+
                                 </div>
                             </section>
 
@@ -62,7 +89,7 @@ export function StickyScroll({ content = [] }) {
 
                     {/* RIGHT STICKY – DESKTOP ONLY */}
                     <div className="hidden lg:block w-1/2">
-                        <div className="sticky top-24 h-[520px] rounded-2xl overflow-hidden shadow-lg bg-white">
+                        <div className="sticky top-24 h-[520px] rounded-2xl overflow-hidden shadow-lg bg-white dark:bg-[#0b1220]">
                             {content.map((item, index) => (
                                 <motion.div
                                     key={index}
