@@ -6,7 +6,11 @@ const content = [
         title: "Accord AI",
         description:
             "Enterprise & Trade eco-system enabling secure trading. The AI brain of your organization automating tasks, predicting outcomes, and optimizing resource consumption for sustainable growth. Accord AI was born from the realization that most AI tools today are focused only on tasks  to-do lists, reminders, productivity. But what about the inner work? What about emotional healing, mental clarity, or spiritual alignment? We envisioned a different kind of assistant one that doesn't just help you do, but helps you be.",
-        bgColor: "#afc5e0",
+        bgColor: {
+            light: "#bae5f0",
+            dark: "#111827" // gray-900 (excellent contrast)
+        },
+
         content: (
             <div className="relative h-full w-full">
                 <img
@@ -28,7 +32,10 @@ const content = [
     {
         title: "Regatic AI",
         description: "Processing rigorous calculations + sustainability. The AI that transforms paperwork into smart digital intelligence — reducing human effort and boosting automation efficiency.",
-        bgColor: "#eff6ff",
+        bgColor: {
+            light: "#92b4e4",
+            dark: "#271525"
+        },
         content: (
             <div className="relative h-full w-full">
                 {/* Image */}
@@ -51,7 +58,10 @@ const content = [
         title: "DocShift",
         description:
             "AI platform for digital information consistency. Convert, transform & migrate documents seamlessly  powered by secure, compliant & scalable AI automation. DocShift is more than a document management system (DMS) it’s a comprehensive ecosystem designed to address modern document challenges.",
-        bgColor: "#c6d0f0",
+        bgColor: {
+            light: "#e8d0ec",
+            dark: "#111827"
+        },
         content: (
             <div className="relative h-full w-full">
                 <img
@@ -72,7 +82,10 @@ const content = [
         title: "3D Virtual Bot",
         description:
             "Conversational AI avatar for website engagement. A real-time talking, interactive 3D AI assistant that listens, thinks, responds, and emotionally connects like a human. These bots move beyond traditional text-based interfaces by incorporating human-like visual and animated components, which enhances user engagement and immersion across digital platforms.",
-        bgColor: "#32a1a7",
+        bgColor: {
+            light: "#32a1a7",
+            dark: "#0b1220"
+        },
         content: (
             <div className="relative h-full w-full">
                 <img
