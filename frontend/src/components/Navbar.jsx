@@ -30,19 +30,19 @@ const Navbar = () => {
   const [mobileProductOpen, setMobileProductOpen] = useState(false)
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false)
   const [mobileSolutionOpen, setMobileSolutionOpen] = useState(false)
-  const [theme, setTheme] = useState('dark')
   const solutionsRef = useRef(null)
   const servicesRef = useRef(null)
   const productRef = useRef(null)
+
+  // Local theme state (no context)
+  const [theme, setTheme] = useState('dark')
   const isMounted = useRef(true)
 
-  // Track mount state to avoid setting state after unmount
   useEffect(() => {
     isMounted.current = true
     return () => { isMounted.current = false }
   }, [])
 
-  // Initialize theme from localStorage or prefers-color-scheme (safe for SSR)
   useEffect(() => {
     try {
       if (typeof window !== 'undefined' && window.localStorage) {
@@ -77,6 +77,7 @@ const Navbar = () => {
     try { if (typeof window !== 'undefined' && window.localStorage) localStorage.setItem('theme', next) } catch (e) {}
   }
 
+
   useEffect(() => {
     function handleClick(e) {
       if (solutionsRef.current && !solutionsRef.current.contains(e.target)) {
@@ -98,7 +99,7 @@ const Navbar = () => {
   }, [])
 
   return (
-    <nav className={`${theme === 'dark' ? 'bg-[#0c0c0c]' : 'bg-white'} w-full relative`}>
+    <nav className={`${theme === 'dark' ? 'bg-[#0c0c0c]' : 'bg-white'} w-full sticky top-0 z-50 shadow-sm`}>
       <div className="container mx-auto px-4 h-20 flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center ml-4 lg:ml-20 h-full">
