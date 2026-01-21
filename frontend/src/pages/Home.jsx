@@ -1,4 +1,6 @@
 import Section from "../components/Section";
+import Navbar from "../components/Navbar";
+import StickyScrollRevealDemo from "../components/StickyScrollRevealDemo";
 import { Card, CardHeader, CardContent } from "../components/Card";
 import Navbar from "../components/Navbar";
 import StickyScrollRevealDemo from "../components/StickyScrollRevealDemo";
