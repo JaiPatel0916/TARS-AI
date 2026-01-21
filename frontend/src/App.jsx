@@ -1,17 +1,10 @@
 // src/App.jsx
 import React from "react";
-import "./index.css"; // Tailwind CSS entry file
-
-import Navbar from "./components/Navbar";
-import StickyScrollRevealDemo from "./components/StickyScrollRevealDemo";
+import "./index.css";
+import Home from "./pages/Home";
 
 function App() {
-  return (
-    <>
-      <Navbar />
-      <StickyScrollRevealDemo />
-    </>
-  );
+  return <Home />;
 }
 
 export default App;
