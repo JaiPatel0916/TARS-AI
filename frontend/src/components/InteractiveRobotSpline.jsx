@@ -11,7 +11,7 @@ export default function InteractiveRobotSpline({ scene, className }) {
         </div>
       }
     >
-        <Spline scene={scene} className={className} />
+    <Spline scene={scene} className={className} />
     </Suspense>
   );
 }
