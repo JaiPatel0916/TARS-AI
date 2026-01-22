@@ -1,4 +1,6 @@
+// src/components/IndustriesSection.jsx
 import React from "react";
+import { useTheme } from "../context/ThemeProvider";
 
 const industries = [
     {
@@ -34,44 +36,53 @@ const industries = [
 ];
 
 const IndustriesSection = () => {
-    return (
-        <section className="w-full px-4 md:px-8 py-24 bg-[#0b0b0f] text-white overflow-hidden">
+    const { theme } = useTheme();
 
+    return (
+        <section
+            className={`w-full px-4 md:px-8 py-24 overflow-hidden transition-colors duration-500
+        ${theme === "dark"
+                    ? "bg-gradient-to-r from-purple-1000 via-[#220e3b] to-purple-1000 text-white"
+                    : "bg-white text-gray-900"
+                }
+      `}
+        >
             {/* Heading */}
             <div className="text-center mb-12">
                 <h2 className="text-4xl md:text-5xl font-bold">
                     Industries We Support
                 </h2>
-                <p className="text-white/60 mt-3">
+                <p
+                    className={`mt-3 ${theme === "dark" ? "text-white/60" : "text-gray-500"
+                        }`}
+                >
                     Hover on a card to explore
                 </p>
             </div>
 
-            {/* Angled Slider */}
+            {/* Slider */}
             <div className="relative w-full">
                 <div className="flex gap-8 animate-slider">
-
                     {[...industries, ...industries].map((item, i) => (
                         <div
-  key={i}
-  className="group relative 
-min-w-[220px] sm:min-w-[260px] lg:min-w-[300px] 
-xl:min-w-[320px]
-h-[300px] sm:h-[360px] lg:h-[380px] xl:h-[420px]
-rounded-2xl overflow-hidden shadow-2xl
-transition-transform duration-500 ease-out"
-  style={{
-    transform: "perspective(1000px) rotateY(18deg)",
-  }}
-  onMouseEnter={(e) =>
-    (e.currentTarget.style.transform = "perspective(1000px) rotateY(0deg)")
-  }
-  onMouseLeave={(e) =>
-    (e.currentTarget.style.transform = "perspective(1000px) rotateY(18deg)")
-  }
->
-
-
+                            key={i}
+                            className="group relative
+                min-w-[220px] sm:min-w-[260px] lg:min-w-[300px] xl:min-w-[320px]
+                h-[300px] sm:h-[360px] lg:h-[380px] xl:h-[420px]
+                rounded-2xl overflow-hidden shadow-2xl
+                transition-transform duration-500 ease-out"
+                            style={{
+                                transform: "perspective(1000px) rotateY(18deg)",
+                            }}
+                            onMouseEnter={(e) =>
+                            (e.currentTarget.style.transform =
+                                "perspective(1000px) rotateY(0deg)")
+                            }
+                            onMouseLeave={(e) =>
+                            (e.currentTarget.style.transform =
+                                "perspective(1000px) rotateY(18deg)")
+                            }
+                        >
                             {/* Image */}
                             <img
                                 src={item.image}
@@ -79,12 +90,12 @@ transition-transform duration-500 ease-out"
                                 className="w-full h-full object-cover"
                             />
 
-                            {/* Hover Overlay */}
+                            {/* Overlay */}
                             <div
-                                className="absolute inset-0 bg-black/60 
-                opacity-0 group-hover:opacity-100 
-                transition-opacity duration-300 
-                flex items-center justify-center"
+                                className={`absolute inset-0 flex items-center justify-center
+                  transition-opacity duration-300 opacity-0 group-hover:opacity-100
+                  ${theme === "dark" ? "bg-black/60" : "bg-white/70"
+                                    }`}
                             >
                                 <h3 className="text-2xl font-semibold">
                                     {item.title}
@@ -92,7 +103,6 @@ transition-transform duration-500 ease-out"
                             </div>
                         </div>
                     ))}
-
                 </div>
             </div>
         </section>

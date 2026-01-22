@@ -9,7 +9,14 @@ export default {
   ],
 
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        purple: {
+          1000: "#12001f", // or your exact dark purple
+        },
+      },
+    },
+
   },
   plugins: [],
 };
