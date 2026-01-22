@@ -11,7 +11,6 @@ import CoreServices from "../components/CoreServices";
 
 import IndustriesSection from "../components/IndustriesSection";
 
-import Navbar from "../components/Navbar";
 
 
 
@@ -21,10 +20,9 @@ export default function Home() {
       <Navbar/>
       <Section />
       <Card />
-      <StickyScrollRevealDemo />
-      <CoreServices />
-      <IndustriesSection/>
-      <Footer/>
+      
+     
+    
 
 
       {/* Behind section */}
@@ -37,7 +35,7 @@ export default function Home() {
       <div className="relative z-20 -mt-[50vh] pointer-events-auto">
         <CoreServices />
       </div>
-
+      <IndustriesSection />
 
       <Footer />
 

@@ -39,5 +39,5 @@ iframe::after {
 }
 
 .animate-slider {
-  animation: sliderMove 9s linear infinite;
+  animation: sliderMove 12s linear infinite;
 }
