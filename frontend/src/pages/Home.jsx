@@ -8,7 +8,11 @@ import Navbar from "../components/Navbar";
 
 import Footer from "../components/Footer";
 import CoreServices from "../components/CoreServices";
+
+import IndustriesSection from "../components/IndustriesSection";
+
 import Navbar from "../components/Navbar";
+
 
 
 export default function Home() {
@@ -17,6 +21,11 @@ export default function Home() {
       <Navbar/>
       <Section />
       <Card />
+      <StickyScrollRevealDemo />
+      <CoreServices />
+      <IndustriesSection/>
+      <Footer/>
+
 
       {/* Behind section */}
       {/* StickyScroll section (must stay clean) */}
@@ -31,6 +40,7 @@ export default function Home() {
 
 
       <Footer />
+
     </div>
   );
 }
