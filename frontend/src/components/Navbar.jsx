@@ -1,6 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react'
-import { useTheme } from '../context/ThemeProvider'
+
 import { Link } from "react-router-dom";
+
+
+import { NavLink } from 'react-router-dom'
+import { useTheme } from '../context/ThemeProvider' 
 
 
 const ChevronDown = () => (
@@ -87,7 +91,10 @@ const Navbar = () => {
 
         {/* Home */}
 
-          <Link to="/" className={`transition-colors ${theme === 'dark' ? 'text-gray-300 hover:text-white' : 'text-gray-800 hover:text-black'}`}>Home</Link>
+           <NavLink to="/" onClick={() => setMobileMenuOpen(false)} className={({isActive}) => `transition-colors ${theme === 'dark' ? 'text-gray-300 hover:text-white' : 'text-gray-800 hover:text-black'} ${isActive ? 'font-semibold' : ''}`}>
+        Home
+        </NavLink>
+
 
         {/* Product Dropdown */}
         <div 
@@ -599,10 +606,14 @@ const Navbar = () => {
             </div>
           )}
         </div>
-          <Link to="/about" className={`transition-colors ${theme === 'dark' ? 'text-gray-300 hover:text-white' : 'text-gray-800 hover:text-black'}`}>
-         About</Link>
-          <Link to="/contact" className={`transition-colors ${theme === 'dark' ? 'text-gray-300 hover:text-white' : 'text-gray-800 hover:text-black'}`}>
-            Contact</Link>
+
+     <NavLink to="/about" onClick={() => setMobileMenuOpen(false)} className={({isActive}) => `transition-colors ${theme === 'dark' ? 'text-gray-300 hover:text-white' : 'text-gray-800 hover:text-black'} ${isActive ? 'font-semibold text-pink-400' : ''}`}>
+          About
+        </NavLink>
+        <a href="#" className={`transition-colors ${theme === 'dark' ? 'text-gray-300 hover:text-white' : 'text-gray-800 hover:text-black'}`}>
+          Contact
+        </a>
+
       </div>
 
       {/* Right-side: Theme Toggle (visible on lg+) */}
@@ -642,13 +653,10 @@ const Navbar = () => {
               </div>
 
 
-                <Link
-                  to="/"
-                  className={`block py-3 text-lg ${theme === 'dark' ? 'text-gray-300 hover:text-white' : 'text-gray-800 hover:text-black'}`}
-                >
-                  Home
-                </Link>
-              
+
+              <NavLink to="/" onClick={() => setMobileMenuOpen(false)} className={`block py-3 text-lg ${theme === 'dark' ? 'text-gray-300 hover:text-white' : 'text-gray-800 hover:text-black'}`}>Home</NavLink>
+              <NavLink to="/about" onClick={() => setMobileMenuOpen(false)} className={`block py-3 text-lg ${theme === 'dark' ? 'text-gray-300 hover:text-white' : 'text-gray-800 hover:text-black'}`}>About</NavLink>
+
               {/* Product Mobile Dropdown (with icons) */}
               <div className=" pb-2">
                 <button
@@ -1089,24 +1097,30 @@ const Navbar = () => {
                 )}
               </div>
 
-                <Link
-                  to="/about"
-                  className={`block py-3 text-lg ${theme === 'dark'
-                      ? 'text-gray-300 hover:text-white'
-                      : 'text-gray-800 hover:text-black'
-                    }`}
-                >
-                  About
-                </Link>
-                <Link
-                  to="/contact"
-                  className={`block py-3 text-lg ${theme === 'dark'
-                      ? 'text-gray-300 hover:text-white'
-                      : 'text-gray-800 hover:text-black'
-                    }`}
-                >
-                  Contact
-                </Link>
+<NavLink
+  to="/about"
+  onClick={() => setMobileMenuOpen(false)}
+  className={`block py-3 text-lg ${
+    theme === "dark"
+      ? "text-gray-300 hover:text-white"
+      : "text-gray-800 hover:text-black"
+  }`}
+>
+  About
+</NavLink>
+
+<NavLink
+  to="/contact"
+  onClick={() => setMobileMenuOpen(false)}
+  className={`block py-3 text-lg ${
+    theme === "dark"
+      ? "text-gray-300 hover:text-white"
+      : "text-gray-800 hover:text-black"
+  }`}
+>
+  Contact
+</NavLink>
+
 
               {/* Mobile/Tablet Theme Toggle (below Contact) */}
               <div className={`mt-4 pt-4 border-t ${theme === 'dark' ? 'border-gray-800' : 'border-gray-200'}`}>
