@@ -607,7 +607,8 @@ const Navbar = () => {
           )}
         </div>
 
-     <NavLink to="/about" onClick={() => setMobileMenuOpen(false)} className={({isActive}) => `transition-colors ${theme === 'dark' ? 'text-gray-300 hover:text-white' : 'text-gray-800 hover:text-black'} ${isActive ? 'font-semibold text-pink-400' : ''}`}>
+     <NavLink to="/about" onClick={() => setMobileMenuOpen(false)} className={({isActive}) => `transition-colors ${theme === 'dark' ? 'text-gray-300 hover:text-white' : 'text-gray-800 hover:text-black'} ${isActive ? 'font-semibold ' : ''}`}>
+
           About
         </NavLink>
         <a href="#" className={`transition-colors ${theme === 'dark' ? 'text-gray-300 hover:text-white' : 'text-gray-800 hover:text-black'}`}>
