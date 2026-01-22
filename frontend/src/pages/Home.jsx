@@ -4,6 +4,10 @@ import { Card, CardHeader, CardContent } from "../components/Card";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import CoreServices from "../components/CoreServices";
+import IndustriesSection from "../components/IndustriesSection";
+
+
+
 
 
 export default function Home() {
@@ -12,6 +16,10 @@ export default function Home() {
       <Navbar/>
       <Section />
       <Card />
+      
+     
+    
+
 
       {/* Behind section */}
       {/* StickyScroll section (must stay clean) */}
@@ -23,9 +31,10 @@ export default function Home() {
       <div className="relative z-20 -mt-[50vh] pointer-events-auto">
         <CoreServices />
       </div>
-
+      <IndustriesSection />
 
       <Footer />
+
     </div>
   );
 }
