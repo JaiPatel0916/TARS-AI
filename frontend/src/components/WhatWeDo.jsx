@@ -184,16 +184,21 @@ const TargetCursor = ({
         ref={sectionRef}
         className={`w-full py-16 px-4 sm:px-6 lg:px-12 ${
           theme === 'dark' 
-            ? 'bg-[rgb(22,16,54)] text-white' 
-            : 'bg-gray-50 text-gray-900'
+            ? 'bg-gradient-to-b from-[#0c0c0c] via-[#1a0a2e] to-[#0c0c0c] text-white' 
+            : 'bg-gradient-to-b from-gray-50 via-white to-gray-50 text-gray-900'
         }`}
       >
         <div className="max-w-6xl mx-auto">
-          <p className={`cursor-target text-[11px] uppercase tracking-[0.1em] text-center text-semibold text-5xl mb-5 ${
-            theme === 'dark' ? 'text-gray-400' : 'text-gray-600'
-          }`}>
-            What We Do 
-          </p>
+          <div className="text-center mb-10 sm:mb-12">
+            <h2 className={`text-3xl sm:text-4xl lg:text-4xl xl:text-4xl font-bold mb-3 sm:mb-4 bg-clip-text text-transparent bg-gradient-to-r ${
+              theme === 'dark' 
+                ? 'text-white' 
+                : 'text-black'
+            }`}>
+              What We Do
+            </h2>
+            <div className={`h-1 w-24 sm:w-32 mx-auto rounded-full bg-gradient-to-r from-purple-500 to-pink-500`}></div>
+          </div>
 
           
 
