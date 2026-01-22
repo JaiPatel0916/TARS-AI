@@ -2,9 +2,14 @@
 import React from "react";
 import "./index.css";
 import Home from "./pages/Home";
+import { ThemeProvider } from "./context/ThemeProvider";
 
 function App() {
-  return <Home />;
+  return (
+    <ThemeProvider>
+      <Home />
+    </ThemeProvider>
+  );
 }
 
 export default App;

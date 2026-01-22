@@ -7,7 +7,7 @@ const content = [
         description:
             "Enterprise & Trade eco-system enabling secure trading. The AI brain of your organization automating tasks, predicting outcomes, and optimizing resource consumption for sustainable growth. Accord AI was born from the realization that most AI tools today are focused only on tasks  to-do lists, reminders, productivity. But what about the inner work? What about emotional healing, mental clarity, or spiritual alignment? We envisioned a different kind of assistant one that doesn't just help you do, but helps you be.",
         bgColor: {
-            light: "#bae5f0",
+            light: "#ebf2f3",
             dark: "#111827" // gray-900 (excellent contrast)
         },
 
@@ -33,7 +33,7 @@ const content = [
         title: "Regatic AI",
         description: "Processing rigorous calculations + sustainability. The AI that transforms paperwork into smart digital intelligence — reducing human effort and boosting automation efficiency.",
         bgColor: {
-            light: "#92b4e4",
+            light: "#ebf2f3",
             dark: "#271525"
         },
         content: (
@@ -59,7 +59,7 @@ const content = [
         description:
             "AI platform for digital information consistency. Convert, transform & migrate documents seamlessly  powered by secure, compliant & scalable AI automation. DocShift is more than a document management system (DMS) it’s a comprehensive ecosystem designed to address modern document challenges.",
         bgColor: {
-            light: "#e8d0ec",
+            light: "#ebf2f3",
             dark: "#111827"
         },
         content: (
@@ -83,7 +83,7 @@ const content = [
         description:
             "Conversational AI avatar for website engagement. A real-time talking, interactive 3D AI assistant that listens, thinks, responds, and emotionally connects like a human. These bots move beyond traditional text-based interfaces by incorporating human-like visual and animated components, which enhances user engagement and immersion across digital platforms.",
         bgColor: {
-            light: "#32a1a7",
+            light: "#ebf2f3",
             dark: "#0b1220"
         },
         content: (
