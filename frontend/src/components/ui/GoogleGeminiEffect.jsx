@@ -16,11 +16,28 @@ export function GoogleGeminiEffect({
         <div className={cn("sticky top-[25vh] w-full pointer-events-none ", className)}>
 
             {/* Heading */}
-            <p className="text-lg md:text-7xl font-normal pb-4 text-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-100 to-neutral-300 dark:bg-gradient-to-b from-black to-neutral-300 ">
+            <p
+                className="
+    text-4xl sm:text-5xl md:text-7xl font-semibold text-center pb-4
+    bg-clip-text text-transparent
+    bg-gradient-to-b
+    from-gray-900 via-gray-700 to-gray-500
+    dark:from-purple-200 dark:via-purple-300 dark:to-purple-500
+    tracking-tight
+  "
+            >
                 {title}
             </p>
 
-            <p className="text-xs md:text-xl font-normal text-center text-neutral-400 mt-4 max-w-lg mx-auto">
+
+            <p
+                className="
+    text-sm sm:text-base md:text-xl
+    font-normal text-center mt-4 max-w-lg mx-auto leading-relaxed
+    text-gray-600 dark:text-gray-300
+    transition-colors duration-300
+  "
+            >
                 {description}
             </p>
 
