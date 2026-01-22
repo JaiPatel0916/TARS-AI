@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
-import { useTheme } from '../context/ThemeProvider'
+import { NavLink } from 'react-router-dom'
+import { useTheme } from '../context/ThemeProvider' 
 
 const ChevronDown = () => (
   <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -84,9 +85,9 @@ const Navbar = () => {
         <div className="hidden lg:flex items-center gap-12 absolute left-1/2 transform -translate-x-1/2">
 
         {/* Home */}
-           <a href="#" className={`transition-colors ${theme === 'dark' ? 'text-gray-300 hover:text-white' : 'text-gray-800 hover:text-black'}`}>
+           <NavLink to="/" onClick={() => setMobileMenuOpen(false)} className={({isActive}) => `transition-colors ${theme === 'dark' ? 'text-gray-300 hover:text-white' : 'text-gray-800 hover:text-black'} ${isActive ? 'font-semibold' : ''}`}>
         Home
-        </a>
+        </NavLink>
 
         {/* Product Dropdown */}
         <div 
@@ -307,9 +308,9 @@ const Navbar = () => {
             </div>
           )}
         </div>
-     <a href="#" className={`transition-colors ${theme === 'dark' ? 'text-gray-300 hover:text-white' : 'text-gray-800 hover:text-black'}`}>
+     <NavLink to="/about" onClick={() => setMobileMenuOpen(false)} className={({isActive}) => `transition-colors ${theme === 'dark' ? 'text-gray-300 hover:text-white' : 'text-gray-800 hover:text-black'} ${isActive ? 'font-semibold text-pink-400' : ''}`}>
           About
-        </a>
+        </NavLink>
         <a href="#" className={`transition-colors ${theme === 'dark' ? 'text-gray-300 hover:text-white' : 'text-gray-800 hover:text-black'}`}>
           Contact
         </a>
@@ -352,7 +353,8 @@ const Navbar = () => {
               </div>
 
 
-              <a href="#" className={`block py-3 text-lg ${theme === 'dark' ? 'text-gray-300 hover:text-white' : 'text-gray-800 hover:text-black'}`}>Home</a>
+              <NavLink to="/" onClick={() => setMobileMenuOpen(false)} className={`block py-3 text-lg ${theme === 'dark' ? 'text-gray-300 hover:text-white' : 'text-gray-800 hover:text-black'}`}>Home</NavLink>
+              <NavLink to="/about" onClick={() => setMobileMenuOpen(false)} className={`block py-3 text-lg ${theme === 'dark' ? 'text-gray-300 hover:text-white' : 'text-gray-800 hover:text-black'}`}>About</NavLink>
               
               {/* Product Mobile Dropdown (with icons) */}
               <div className=" pb-2">
@@ -508,7 +510,7 @@ const Navbar = () => {
                 )}
               </div>
 
-              <a href="#" className={`block py-3 text-lg ${theme === 'dark' ? 'text-gray-300 hover:text-white' : 'text-gray-800 hover:text-black'}`}>About</a>
+              <NavLink to="/about" onClick={() => setMobileMenuOpen(false)} className={`block py-3 text-lg ${theme === 'dark' ? 'text-gray-300 hover:text-white' : 'text-gray-800 hover:text-black'}`}>About</NavLink>
               <a href="#" className={`block py-3 text-lg ${theme === 'dark' ? 'text-gray-300 hover:text-white' : 'text-gray-800 hover:text-black'}`}>Contact</a>
 
               {/* Mobile/Tablet Theme Toggle (below Contact) */}
