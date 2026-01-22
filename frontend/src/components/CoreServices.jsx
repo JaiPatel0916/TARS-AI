@@ -1,5 +1,6 @@
 import FlowingMenu from "./ui/FlowingMenu";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 const coreServices = [
     { link: "#", text: "AI & LLM", image: "/images/accordai.png" },
@@ -11,7 +12,9 @@ const coreServices = [
 
 export default function CoreServices() {
     const [isDark, setIsDark] = useState(false);
+    const sectionRef = useRef(null);
 
+    /* ---------------- DARK MODE DETECTION ---------------- */
     useEffect(() => {
         const html = document.documentElement;
         setIsDark(html.classList.contains("dark"));
@@ -20,30 +23,43 @@ export default function CoreServices() {
             setIsDark(html.classList.contains("dark"));
         });
 
-        observer.observe(html, { attributes: true, attributeFilter: ["class"] });
+        observer.observe(html, {
+            attributes: true,
+            attributeFilter: ["class"],
+        });
+
         return () => observer.disconnect();
     }, []);
 
-    return (
-        <section
-            className={`w-full py-28 transition-colors duration-500 ${isDark ? "bg-[#060010]" : "bg-[#f6f8fc]"
-                }`}
-        >
-            {/* Heading */}
-            <div className="max-w-7xl mx-auto px-6 mb-16 text-center">
-                {/* <p className="text-sm md:text-base tracking-widest uppercase font-medium text-gray-600 dark:text-gray-400">
-                    Core Services
-                </p> */}
+    /* ---------------- STRONG, VISIBLE PARALLAX ---------------- */
+    const { scrollYProgress } = useScroll({
+        target: sectionRef,
+        offset: ["start end", "start center"],
+    });
 
-                <h2 className="mt-3 text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white">
-                   Core Services
+    // Big entry movement so it is NOTICEABLE
+    const y = useTransform(scrollYProgress, [0, 1], [140, 0]);
+    const opacity = useTransform(scrollYProgress, [0, 0.4], [0, 1]);
+
+    return (
+        <motion.section
+            ref={sectionRef}
+            style={{ y, opacity }}
+            className={`w-full py-28 relative overflow-hidden transition-colors duration-500
+        ${isDark ? "bg-[#060010]" : "bg-[#f6f8fc]"}`}
+        >
+            {/* ---------------- HEADING ---------------- */}
+            <div className="max-w-7xl mx-auto px-6 mb-16 text-center">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight
+          text-gray-900 dark:text-white">
+                    Core Services
                 </h2>
             </div>
 
-            {/* Flowing rows */}
+            {/* ---------------- FLOWING MENU (FULL WIDTH) ---------------- */}
             <div
-                className={`w-full h-[420px] ${isDark ? "" : "bg-white shadow-sm"
-                    }`}
+                className={`w-full h-[420px] overflow-hidden
+          ${isDark ? "" : "bg-white shadow-sm"}`}
             >
                 <FlowingMenu
                     items={coreServices}
@@ -59,6 +75,6 @@ export default function CoreServices() {
                     }
                 />
             </div>
-        </section>
+        </motion.section>
     );
 }

@@ -115,7 +115,7 @@ export function StickyScroll({ content = [] }) {
                     {/* 🔹 RIGHT STICKY CARD (DESKTOP ONLY) */}
                     <div className="hidden lg:block w-1/2">
                         <motion.div
-                            style={{ opacity: hideStickyCard }}   // ✅ WHOLE CARD disappears
+                          // ✅ WHOLE CARD disappears
 className="
     sticky top-[250px]
     h-[400px] xl:h-[440px] 2xl:h-[480px]
