@@ -4,6 +4,7 @@ import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
 import OurCoreValues from '../components/OurCoreValues'
 import AboutUs from '../components/AboutUs'
+import Future from '../components/Future';
 
 const About = () => {
   return (
@@ -12,6 +13,7 @@ const About = () => {
       <AboutUs/>
       <WhatWeDo/>
       <OurCoreValues/>
+      <Future/>
       <Footer/>
     </div>
   )
