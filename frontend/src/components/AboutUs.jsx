@@ -4,7 +4,7 @@ import { useTheme } from "../context/ThemeProvider";
 
 const industries = [
   "Energy & Clean Power",
-  "Government & Smart Cities",
+  "Government & Cities",
   "Healthcare",
   "Education",
   "Banking & Finance",
@@ -76,21 +76,21 @@ const AboutUs = ({
   const onTouchEnd = () => { const d = touchDeltaX.current; if (d > 50) prev(); else if (d < -50) next(); touchDeltaX.current = 0; };
 
   return (
-    <section className="relative min-h-screen w-full overflow-hidden isolate">
+    <section className="relative min-h-screen w-full overflow-hidden isolate ">
       {/* Background */}
       <img
         src={backgroundImageUrl}
         alt=""
         className="absolute inset-0 h-full w-full object-cover"
       />
-      <div className={`absolute inset-0 ${theme === 'dark' ? 'bg-black/60' : 'bg-white/40'}`} />
+      <div className={`absolute inset-0 ${theme === 'dark' ? 'bg-black/60' : 'bg-white'}`} />
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-28">
-        <div className="max-w-4xl mx-auto text-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 py-18 mt-8">
+        <div className="max-w-6xl mx-auto text-center">
           {/* Badge */}
           <div className={`inline-flex items-center gap-3 rounded-full px-5 text-sm sm:text-base py-2 ring-1 backdrop-blur  ${theme === 'dark' ? 'bg-white/10 ring-white/15 text-white' : 'bg-white ring-gray-200 text-gray-900'}`}>
-            <span className="text-xs font-semibold bg-white text-black px-3 py-1 rounded-full ${theme==='dark'?'bg-black text-white'">
+            <span className={`text-xs font-semibold px-3 py-1 rounded-full ${theme === 'dark' ? 'bg-white text-black' : 'bg-black text-white'}`}>
               About Us
             </span>
             <span className={`text-sm ${theme === 'dark' ? 'text-white' : 'text-black'}`}>
@@ -115,7 +115,7 @@ const AboutUs = ({
           <p className={`mt-6 ${theme === 'dark' ? 'text-white/80' : 'text-gray-900'} text-base sm:text-lg max-w-3xl mx-auto`}>
             <strong>TARS AI</strong> is a next-generation AI company shaping
             enterprise transformation through{" "}
-            <span className="text-white font-medium ">
+            <span className={`font-medium ${theme === 'dark' ? 'text-white' : 'text-black'}`}>
               Artificial Intelligence, LLMs, Automation, Blockchain &
               Cybersecurity
             </span>
@@ -125,8 +125,8 @@ const AboutUs = ({
         </div>
 
         {/* Industries Section (Carousel) */}
-        <div className="mt-20 max-w-5xl mx-auto">
-          <h2 className={`text-center ${theme === 'dark' ? 'text-white' : 'text-gray-900'} text-2xl sm:text-3xl font-semibold mb-6`}>
+        <div className="mt-26 sm:mt-20 max-w-7xl px-4 mt-5 sm:px-6 mx-auto">
+          <h2 className={`text-center ${theme ==='dark'?'text-white' : 'text-gray-900'} text-xl sm:text-2xl lg:text-3xl font-semibold mb-6 sm:mb-8 lg:mb-10`}>
             Industries We Empower
           </h2>
 
@@ -141,8 +141,8 @@ const AboutUs = ({
                 onTouchEnd={onTouchEnd}
               >
                 {industries.map((industry, index) => (
-                  <div key={index} className="flex-none px-2" style={{ width: `${100 / itemsPerView}%` }}>
-                    <div className={`rounded-xl px-4 py-6 text-center text-sm sm:text-base font-medium transition ${theme === 'dark' ? 'bg-white/10 backdrop-blur ring-1 ring-white/15 text-white/90 hover:bg-white/15' : 'bg-transparent border border-gray-300 text-gray-800 hover:border-pink-400'}`}>
+                  <div key={index} className="flex-none px-1 sm:px-2" style={{ width: `${100 / itemsPerView}%` }}>
+                    <div className={`rounded-lg sm:rounded-xl px-3 py-4 mt-10 sm:px-4 sm:py-6 text-center text-xs sm:text-sm md:text-base font-medium transition whitespace-nowrap ${theme === 'dark' ? 'bg-white/10 backdrop-blur ring-1 ring-white/15 text-white/90 hover:bg-white/15' : 'bg-transparent border border-gray-300 text-gray-800 hover:border-pink-400'}`}>
                       {industry}
                     </div>
                   </div>
@@ -150,16 +150,8 @@ const AboutUs = ({
               </div>
             </div>
 
-            {/* Prev / Next Buttons */}
-            <button onClick={prev} aria-label="Previous" className={`absolute left-2 top-1/2 -translate-y-1/2 p-2 rounded-full ${theme === 'dark' ? 'bg-white/10 text-white hover:bg-white/20' : 'bg-white text-gray-800 shadow'} focus:outline-none`}> 
-              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7"/></svg>
-            </button>
-            <button onClick={next} aria-label="Next" className={`absolute right-2 top-1/2 -translate-y-1/2 p-2 rounded-full ${theme === 'dark' ? 'bg-white/10 text-white hover:bg-white/20' : 'bg-white text-gray-800 shadow'} focus:outline-none`}> 
-              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7"/></svg>
-            </button>
-
             {/* Dots / Pages */}
-            <div className="flex items-center justify-center gap-2 mt-4">
+            <div className="flex items-center justify-center gap-2 mt-6 sm:mt-4">
               {Array.from({ length: Math.max(1, Math.ceil(industries.length / itemsPerView)) }).map((_, p) => (
                 <button key={p} onClick={() => goToPage(p)} className={`w-3 h-3 rounded-full ${Math.floor(currentIndex / itemsPerView) === p ? 'bg-pink-500' : (theme === 'dark' ? 'bg-white/30' : 'bg-gray-300')}`} aria-label={`Go to page ${p + 1}`} />
               ))}

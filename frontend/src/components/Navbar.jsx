@@ -611,7 +611,7 @@ const Navbar = () => {
 
           About
         </NavLink>
-        <a href="#" className={`transition-colors ${theme === 'dark' ? 'text-gray-300 hover:text-white' : 'text-gray-800 hover:text-black'}`}>
+        <a href="/contact" className={`transition-colors ${theme === 'dark' ? 'text-gray-300 hover:text-white' : 'text-gray-800 hover:text-black'}`}>
           Contact
         </a>
 

@@ -14,7 +14,7 @@ const OurCoreValues = () => {
       ),
       title: "Innovation with Purpose",
       description: "Driving breakthrough solutions that make a real difference in the world.",
-      color: "from-cyan-500 to-blue-500"
+      color: "from-purple-500 to-pink-500"
     },
     {
       icon: (
@@ -24,7 +24,7 @@ const OurCoreValues = () => {
       ),
       title: "Sustainability First",
       description: "Building eco-friendly technology for a greener, sustainable future.",
-      color: "from-green-500 to-emerald-500"
+      color: "from-purple-500 to-pink-500"
     },
     {
       icon: (
@@ -44,7 +44,7 @@ const OurCoreValues = () => {
       ),
       title: "Transparency & Trust",
       description: "Open communication and honest relationships with every stakeholder.",
-      color: "from-orange-500 to-red-500"
+      color: "from-purple-500 to-pink-500"
     }
   ];
 
@@ -67,7 +67,7 @@ const OurCoreValues = () => {
       <div className="relative max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-10 sm:mb-12 lg:mb-16">
-          <h2 className={`text-3xl sm:text-4xl lg:text-4xl xl:text-4xl font-bold mb-3 sm:mb-4 bg-clip-text text-transparent bg-gradient-to-r ${
+          <h2 className={`text-3xl sm:text-4xl lg:text-4xl xl:text-4xl font-bold mb-3 sm:mb-4  ${
             theme === 'dark' 
               ? 'text-white' 
               : 'text-black'
