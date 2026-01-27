@@ -190,7 +190,7 @@ const TargetCursor = ({
       >
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-10 sm:mb-12">
-            <h2 className={`text-3xl sm:text-4xl lg:text-4xl xl:text-4xl font-bold mb-3 sm:mb-4 bg-clip-text text-transparent bg-gradient-to-r ${
+            <h2 className={`text-3xl sm:text-4xl lg:text-4xl xl:text-4xl font-bold mb-3 sm:mb-4  ${
               theme === 'dark' 
                 ? 'text-white' 
                 : 'text-black'
@@ -217,10 +217,12 @@ const TargetCursor = ({
                 key={i}
                 onMouseEnter={() => { if (!isMobile) setActiveIndex(i); }}
                 onMouseLeave={() => { if (!isMobile) setActiveIndex(null); }}
-                className={`cursor-target rounded-xl p-5 transition-all duration-200 ease-out hover:scale-[1.03] ${
+                onTouchStart={() => { if (isMobile) setActiveIndex(i); }}
+                onTouchEnd={() => { if (isMobile) setTimeout(() => setActiveIndex(null), 200); }}
+                className={`cursor-target rounded-xl p-5 transition-all duration-200 ease-out hover:scale-[1.03] active:scale-[1.03] ${
                   theme === 'dark'
-                    ? 'border border-white/10 hover:border-[#b38cff]'
-                    : 'border border-gray-300 hover:border-pink-500 bg-white shadow-sm'
+                    ? 'border border-white/10 hover:border-[#b38cff] active:border-[#b38cff]'
+                    : 'border border-gray-300 hover:border-pink-500 active:border-pink-500 bg-white shadow-sm'
                 } ${activeIndex !== null && activeIndex !== i ? 'opacity-60 blur-sm' : 'opacity-100'}`}
               >
                 {item}

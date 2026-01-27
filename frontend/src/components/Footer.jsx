@@ -15,7 +15,7 @@ const Footer = () => {
           
           {/* Heading + Buttons */}
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 sm:gap-6">
-            <h2 className="text-lg sm:text-2xl md:text-3xl  lg:text-4xl font-bold bg-gradient-to-r from-indigo-600 via-purple-500 to-pink-500 bg-clip-text text-transparent leading-tight flex-1">
+            <h2 className="text-lg sm:text-2xl md:text-3xl  py-4 lg:text-4xl font-bold bg-gradient-to-r from-indigo-600 via-purple-500 to-pink-500 bg-clip-text text-transparent leading-tight flex-1">
               Ready to Build Intelligent, Sustainable &amp; Secure AI Systems?
             </h2>
             
