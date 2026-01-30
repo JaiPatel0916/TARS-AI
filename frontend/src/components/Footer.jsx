@@ -16,19 +16,15 @@ const Footer = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-12 py-12 sm:py-16 lg:py-20 relative z-10">
         {/* Top CTA */}
         <div className="max-w-4xl mx-auto text-center mb-10">
-          <h2 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight ${theme === 'dark' ? 'text-white' : 'text-black'}`}>
+          <h2 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight ${theme === 'dark' ? 'text-gray-500' : 'text-black'}`}>
             Ready to Build Intelligent, Sustainable &amp; Secure AI Systems?
           </h2>
-          <p className={`mt-4 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'} max-w-3xl mx-auto`}>
-            Let's discuss how TARS AI can help you streamline operations,
-            improve performance, and scale with confidence.
-          </p>
         </div>
 
         {/* Columns */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-8 ">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-8 mt-6 sm:mt-8 lg:mt-16 ">
           {/* Company */}
-          <div className="space-y-4 lg:col-span-2">
+          <div className="space-y-4 lg:col-span-2 ">
             {/* <h3 className={`flex items-center gap-3 text-lg font-medium relative z-20 ${theme === 'dark' ? 'text-white' : 'text-black'}`}>
               <img
                 src="/logo.png"
@@ -176,56 +172,53 @@ const Footer = () => {
                 <span className="p-1.5 rounded-full bg-purple-600/10 text-purple-400 inline-flex items-center justify-center border border-purple-400/20">
                   <MapPin className="h-4 w-4" />
                 </span>
-                <span>Gotmare Complex,Dharampeth,<br/>Nagpur,441236</span>
+                <span>Dharampeth,Nagpur,441236</span>
               </li>
             </ul>
           </div>
         </div>
 
-        {/* Follow Us - Below */}
-        <div className="mt-12 pt-8 border-t border-white/10">
-          <h4 className={`text-sm font-bold mb-4 ${theme === 'dark' ? 'text-white' : 'text-black'}`}>Follow Us</h4>
-          <div className="flex items-center gap-4">
-            <a
-              href="#"
-              aria-label="Facebook"
-              className={`p-1.5 rounded-full bg-purple-600/10 text-purple-400 inline-flex items-center justify-center border border-purple-400/20 ${theme === 'dark' ? 'hover:text-pink-400' : 'hover:text-pink-600'}`}
-            >
-              <Facebook className="h-5 w-5" />
-            </a>
-            <a
-              href="#"
-              aria-label="Twitter"
-              className={`p-1.5 rounded-full bg-purple-600/10 text-purple-400 inline-flex items-center justify-center border border-purple-400/20 ${theme === 'dark' ? 'hover:text-pink-400' : 'hover:text-pink-600'}`}
-            >
-              <Twitter className="h-5 w-5" />
-            </a>
-            <a
-              href="#"
-              aria-label="LinkedIn"
-              className={`p-1.5 rounded-full bg-purple-600/10 text-purple-400 inline-flex items-center justify-center border border-purple-400/20 ${theme === 'dark' ? 'hover:text-pink-400' : 'hover:text-pink-600'}`}
-            >
-              <Linkedin className="h-5 w-5" />
-            </a>
-            <a
-              href="#"
-              aria-label="Instagram"
-              className={`p-1.5 rounded-full bg-purple-600/10 text-purple-400 inline-flex items-center justify-center border border-purple-400/20 ${theme === 'dark' ? 'hover:text-pink-400' : 'hover:text-pink-600'}`}
-            >
-              <Instagram className="h-5 w-5" />
-            </a>
-          </div>
-        </div>
-
-       
-        
       </div>
-       {/* Divider & bottom */}
-      <div className="mt-10 border-t border-white/6 pt-6 pb-6 mx-16">
-          <p className={`text-center text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
-            © 2026 TARS AI. All rights reserved.
-          </p>
-        </div>
+      
+      {/* Follow Us Icons */}
+      <div className="flex items-center justify-center gap-4 mt-2">
+        <a
+          href="#"
+          aria-label="Facebook"
+          className={`p-1.5 rounded-full ${theme === 'dark' ? 'bg-purple-600/10 text-purple-400' : 'bg-purple-400/60 text-purple-900'} inline-flex items-center justify-center border border-purple-400/20 hover:text-pink-600`}
+        >
+          <Facebook className="h-5 w-5" />
+        </a>
+        <a
+          href="#"
+          aria-label="Twitter"
+          className={`p-1.5 rounded-full ${theme === 'dark' ? 'bg-purple-600/10 text-purple-400' : 'bg-purple-400/60 text-purple-900'} inline-flex items-center justify-center border border-purple-400/20 hover:text-pink-600`}
+        >
+          <Twitter className="h-5 w-5" />
+        </a>
+        <a
+          href="#"
+          aria-label="LinkedIn"
+          className={`p-1.5 rounded-full ${theme === 'dark' ? 'bg-purple-600/10 text-purple-400' : 'bg-purple-400/60 text-purple-900'} inline-flex items-center justify-center border border-purple-400/20 hover:text-pink-600`}
+        >
+          <Linkedin className="h-5 w-5" />
+        </a>
+        <a
+          href="#"
+          aria-label="Instagram"
+          className={`p-1.5 rounded-full ${theme === 'dark' ? 'bg-purple-600/10 text-purple-400' : 'bg-purple-400/60 text-purple-900'}  inline-flex items-center justify-center border border-purple-400/20 hover:text-pink-600`}
+        >
+          <Instagram className="h-5 w-5" />
+        </a>
+      </div>
+      
+      {/* Divider & bottom */}
+      <div className={`mt-8 border-t ${theme === 'dark' ? 'border-gray-400/10' : 'border-black'} pt-6 pb-6 mx-16`}>
+        <p className={`text-center text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
+          © 2026 TARS AI. All rights reserved.
+        </p>
+      </div>
+      
     </footer>
   );
 };
