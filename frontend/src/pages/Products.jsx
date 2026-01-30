@@ -4,6 +4,7 @@ import Footer from "../components/Footer";
 import RagneticAI from "../Products/RagneticAI";
 import AccordAI from "../Products/AccordAI";
 import ThreeDVirtualBot from "../Products/ThreeDVirtualBot";
+import DocsshiftAI from "../Products/DocsshiftAI";
 
 export default function Products() { 
   const { product } = useParams();
@@ -16,6 +17,13 @@ export default function Products() {
       {product === "ragnetic-ai" && <RagneticAI />}
       {product === "accord-ai" && <AccordAI />}
       {product === "3d-virtual-bot" && <ThreeDVirtualBot />}
+    return (
+        <div className="min-h-screen  bg-gradient-to-br from-[#14001f] via-[#1f0033] to-[#2b004d]">
+            <Navbar />
+
+            {/* Render product based on URL */}
+            {product === "ragnetic-ai" && <RagneticAI />}
+            {product === "docsshift-ai" && <DocsshiftAI />}
 
       {/* Optional fallback */}
       {!["ragnetic-ai", "accord-ai"].includes(product) && (

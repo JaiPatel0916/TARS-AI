@@ -24,6 +24,7 @@ import Finance from "./Solutions/Finance";
 //import Retail from "./Solutions/Retail";
 //import Government from "./Solutions/Government";
 
+import DocsshiftAI from "./Products/DocsshiftAI";
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
           <Route path="/products/ragnetic-ai" element={<RagneticAI />} />
           <Route path="/products/accord-ai" element={<AccordAI />} />
           <Route path="/products/3d-virtual-bot" element={<ThreeDVirtualBot />} />
+          <Route path="/products/docsshift-ai" element={<DocsshiftAI />} />
         </Route>
 
         <Route element={<SolutionLayout />}>

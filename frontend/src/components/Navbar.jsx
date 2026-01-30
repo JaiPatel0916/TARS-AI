@@ -191,8 +191,8 @@ const Navbar = () => {
                   </Link>
 
 
-                  <button
-                    type="button"
+                  <Link
+                    to="/products/docsshift-ai"
                     className={`flex items-start gap-3 p-2 rounded ${theme === 'dark' ? 'hover:bg-gray-900' : 'hover:bg-gray-100'}`}
                   >
                     <svg
@@ -216,7 +216,7 @@ const Navbar = () => {
                         Document processing
                       </div>
                     </div>
-                  </button>
+                  </Link>
 
 
                   <Link
@@ -746,7 +746,7 @@ const Navbar = () => {
                       </Link>
 
                       <Link
-                        to="/products/docshift-ai"
+                        to="/products/docsshift-ai"
                         className={`flex items-start gap-3 p-2 rounded ${theme === 'dark' ? 'hover:bg-gray-900' : 'hover:bg-gray-100'}`}
                       >
                         <svg
@@ -1129,30 +1129,32 @@ const Navbar = () => {
                   About
                 </NavLink>
 
-                <NavLink
-                  to="/contact"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className={`block py-3 text-lg ${theme === "dark"
-                    ? "text-gray-300 hover:text-white"
-                    : "text-gray-800 hover:text-black"
-                    }`}
-                >
-                  Contact
-                </NavLink>
+<NavLink
+  to="/about"
+  onClick={() => setMobileMenuOpen(false)}
+  className={`block py-3 text-lg ${
+    theme === "dark"
+      ? "text-gray-300 hover:text-white"
+      : "text-gray-800 hover:text-black"
+  }`}
+>
+  About
+</NavLink>
+
+<NavLink
+  to="/contact"
+  onClick={() => setMobileMenuOpen(false)}
+  className={`block py-3 text-lg ${
+    theme === "dark"
+      ? "text-gray-300 hover:text-white"
+      : "text-gray-800 hover:text-black"
+  }`}
+>
+  Contact
+</NavLink>
 
 
-                {/* Mobile/Tablet Theme Toggle (below Contact) */}
-                <div className={`mt-4 pt-4 border-t ${theme === 'dark' ? 'border-gray-800' : 'border-gray-200'}`}>
-                  <button
-                    onClick={toggleTheme}
-                    aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
-                    className={`w-full flex items-center justify-center gap-2 py-2 rounded ${theme === 'dark' ? 'text-gray-300 hover:bg-gray-800' : 'text-gray-800 hover:bg-gray-200'}`}
-                  >
-                    {theme === 'dark' ? <Moon /> : <Sun />}
-                    <span className={`${theme === 'dark' ? 'text-white' : 'text-gray-900'} font-medium`}>{theme === 'dark' ? 'Dark Mode' : 'Light Mode'}</span>
-                  </button>
-                </div>
-              </div>
+
             </div>
           </>
         )}
