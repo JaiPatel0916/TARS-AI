@@ -1,5 +1,8 @@
-import React, { useState, useEffect, useRef } from "react";
+import React from "react";
 import { useTheme } from "../context/ThemeProvider";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
+import "swiper/css";
 
 
 const industries = [
@@ -18,63 +21,6 @@ const AboutUs = ({
 }) => {
   const { theme } = useTheme();
 
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [itemsPerView, setItemsPerView] = useState(1);
-  const [isPaused, setIsPaused] = useState(false);
-  const trackRef = useRef(null);
-  const touchStartX = useRef(null);
-  const touchDeltaX = useRef(0);
-
-  const getItemsPerView = () => {
-    if (typeof window === 'undefined') return 1;
-    const w = window.innerWidth;
-    if (w >= 1280) return 4;
-    if (w >= 1024) return 3;
-    if (w >= 640) return 2;
-    return 1;
-  };
-
-  useEffect(() => {
-    const update = () => {
-      const ip = getItemsPerView();
-      setItemsPerView(ip);
-      setCurrentIndex(prev => Math.min(prev, Math.max(0, industries.length - ip)));
-    };
-    update();
-    window.addEventListener('resize', update);
-    return () => window.removeEventListener('resize', update);
-  }, []);
-
-  const maxIndex = Math.max(0, industries.length - itemsPerView);
-  const prev = () => setCurrentIndex(i => Math.max(0, i - itemsPerView));
-  const next = () => setCurrentIndex(i => Math.min(maxIndex, i + itemsPerView));
-  const goToPage = (page) => setCurrentIndex(Math.min(maxIndex, page * itemsPerView));
-
-  useEffect(() => {
-    const onKey = (e) => {
-      if (e.key === 'ArrowLeft') prev();
-      if (e.key === 'ArrowRight') next();
-    };
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
-  }, [itemsPerView]);
-
-  // Auto-play carousel
-  useEffect(() => {
-    if (isPaused) return;
-    const interval = setInterval(() => {
-      setCurrentIndex(i => {
-        const nextIndex = i + itemsPerView;
-        return nextIndex > maxIndex ? 0 : nextIndex;
-      });
-    }, 3000);
-    return () => clearInterval(interval);
-  }, [isPaused, itemsPerView, maxIndex]);
-
-  const onTouchStart = (e) => { touchStartX.current = e.touches[0].clientX; touchDeltaX.current = 0; };
-  const onTouchMove = (e) => { touchDeltaX.current = e.touches[0].clientX - touchStartX.current; };
-  const onTouchEnd = () => { const d = touchDeltaX.current; if (d > 50) prev(); else if (d < -50) next(); touchDeltaX.current = 0; };
-
   return (
     <section className="relative min-h-screen w-full overflow-hidden isolate ">
       {/* Background */}
@@ -89,7 +35,7 @@ const AboutUs = ({
       <div className="relative z-10 max-w-7xl mx-auto px-6 py-18 mt-8">
         <div className="max-w-6xl mx-auto text-center">
           {/* Badge */}
-          <div className={`inline-flex items-center gap-3 rounded-full px-5 text-sm sm:text-base py-2 ring-1 backdrop-blur  ${theme === 'dark' ? 'bg-white/10 ring-white/15 text-white' : 'bg-white ring-gray-200 text-gray-900'}`}>
+          <div className={`inline-flex items-center gap-3 mt-10 rounded-full px-5 text-sm sm:text-base py-2 ring-1 backdrop-blur  ${theme === 'dark' ? 'bg-white/10 ring-white/15 text-white' : 'bg-white ring-gray-200 text-gray-900'}`}>
             <span className={`text-xs font-semibold px-3 py-1 rounded-full ${theme === 'dark' ? 'bg-white text-black' : 'bg-black text-white'}`}>
               About Us
             </span>
@@ -124,38 +70,46 @@ const AboutUs = ({
           </p>
         </div>
 
-        {/* Industries Section (Carousel) */}
+        {/* Industries Section (Swiper) */}
         <div className="mt-26 sm:mt-20 max-w-7xl px-4 mt-5 sm:px-6 mx-auto">
           <h2 className={`text-center ${theme ==='dark'?'text-white' : 'text-gray-900'} text-xl sm:text-2xl lg:text-3xl font-semibold mb-6 sm:mb-8 lg:mb-10`}>
             Industries We Empower
           </h2>
 
-          <div className="relative" onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)}>
-            <div className="overflow-hidden">
-              <div
-                ref={trackRef}
-                className="flex transition-transform duration-500"
-                style={{ transform: `translateX(-${currentIndex * (100 / itemsPerView)}%)` }}
-                onTouchStart={onTouchStart}
-                onTouchMove={onTouchMove}
-                onTouchEnd={onTouchEnd}
-              >
-                {industries.map((industry, index) => (
-                  <div key={index} className="flex-none px-1 sm:px-2" style={{ width: `${100 / itemsPerView}%` }}>
-                    <div className={`rounded-lg sm:rounded-xl px-3 py-4 mt-10 sm:px-4 sm:py-6 text-center text-xs sm:text-sm md:text-base font-medium transition whitespace-nowrap ${theme === 'dark' ? 'bg-white/10 backdrop-blur ring-1 ring-white/15 text-white/90 hover:bg-white/15' : 'bg-transparent border border-gray-300 text-gray-800 hover:border-pink-400'}`}>
-                      {industry}
-                    </div>
+          <div className="relative mt-10">
+            <Swiper
+              modules={[Autoplay]}
+              spaceBetween={16}
+              slidesPerView={1}
+              loop={true}
+              autoplay={{
+                delay: 1500,
+                disableOnInteraction: false,
+              }}
+              breakpoints={{
+                640: {
+                  slidesPerView: 2,
+                  spaceBetween: 16,
+                },
+                1024: {
+                  slidesPerView: 3,
+                  spaceBetween: 20,
+                },
+                1280: {
+                  slidesPerView: 4,
+                  spaceBetween: 24,
+                },
+              }}
+              className="industries-swiper"
+            >
+              {industries.map((industry, index) => (
+                <SwiperSlide key={index}>
+                  <div className={`rounded-lg sm:rounded-xl px-3 py-4 sm:px-4 sm:py-6 text-center text-xs sm:text-sm md:text-base font-medium transition whitespace-nowrap ${theme === 'dark' ? 'bg-white/10 backdrop-blur ring-1 ring-white/15 text-white/90 hover:bg-white/15' : 'bg-transparent border border-gray-300 text-gray-800 hover:border-pink-400'}`}>
+                    {industry}
                   </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Dots / Pages */}
-            <div className="flex items-center justify-center gap-2 mt-6 sm:mt-4">
-              {Array.from({ length: Math.max(1, Math.ceil(industries.length / itemsPerView)) }).map((_, p) => (
-                <button key={p} onClick={() => goToPage(p)} className={`w-3 h-3 rounded-full ${Math.floor(currentIndex / itemsPerView) === p ? 'bg-pink-500' : (theme === 'dark' ? 'bg-white/30' : 'bg-gray-300')}`} aria-label={`Go to page ${p + 1}`} />
+                </SwiperSlide>
               ))}
-            </div>
+            </Swiper>
           </div>
         </div>
       </div>
