@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 
 import { NavLink } from 'react-router-dom'
-import { useTheme } from '../context/ThemeProvider' 
+import { useTheme } from '../context/ThemeProvider'
 
 
 const ChevronDown = () => (
@@ -73,7 +73,7 @@ const Navbar = () => {
         <div className="flex items-center ml-1 sm:ml-4 lg:ml-20 h-full">
           <img src="/logo.png" alt="Tars.Ai Logo" className="h-12 w-12 sm:h-20 sm:w-20 lg:h-24 lg:w-24 object-contain max-h-full" />
           {/* <span className="text-white text-xl font-semibold">Tars.Ai</span> */}
-        </div> 
+        </div>
 
         {/* Hamburger Menu Button */}
         <button
@@ -89,48 +89,53 @@ const Navbar = () => {
         {/* Navigation Links - Centered */}
         <div className="hidden lg:flex items-center gap-12 absolute left-1/2 transform -translate-x-1/2">
 
-        {/* Home */}
+          {/* Home */}
 
-           <NavLink to="/" onClick={() => setMobileMenuOpen(false)} className={({isActive}) => `transition-colors ${theme === 'dark' ? 'text-gray-300 hover:text-white' : 'text-gray-800 hover:text-black'} ${isActive ? 'font-semibold' : ''}`}>
-        Home
-        </NavLink>
+          <NavLink to="/" onClick={() => setMobileMenuOpen(false)} className={({ isActive }) => `transition-colors ${theme === 'dark' ? 'text-gray-300 hover:text-white' : 'text-gray-800 hover:text-black'} ${isActive ? 'font-semibold' : ''}`}>
+            Home
+          </NavLink>
 
 
-        {/* Product Dropdown */}
-        <div 
-          ref={productRef}
-          className="relative"
-          onMouseEnter={() => {
-            setServicesOpen(false)
-            setServicesPersist(false)
-            setSolutionOpen(false)
-            setSolutionPersist(false)
-            if (!productPersist) setProductOpen(true)
-          }}
-          onMouseLeave={() => { if (!productPersist) setProductOpen(false) }}
-        >
-          <button
-            onClick={() => {
-              setProductPersist(prev => {
-                const next = !prev
-                setProductOpen(next)
-                return next
-              })
+          {/* Product Dropdown */}
+          <div
+            ref={productRef}
+            className="relative"
+            onMouseEnter={() => {
+              setServicesOpen(false)
+              setServicesPersist(false)
+              setSolutionOpen(false)
+              setSolutionPersist(false)
+              if (!productPersist) setProductOpen(true)
             }}
-            className={`flex items-center gap-1 transition-colors ${theme === 'dark' ? 'text-gray-300 hover:text-white' : 'text-gray-800 hover:text-black'}`}
-            aria-expanded={productOpen}
-            aria-haspopup="true"
+            onMouseLeave={() => { if (!productPersist) setProductOpen(false) }}
           >
-            Product
-            <ChevronDown />
-          </button>
+            <button
+              onClick={() => {
+                setProductPersist(prev => {
+                  const next = !prev
+                  setProductOpen(next)
+                  return next
+                })
+              }}
+              className={`flex items-center gap-1 transition-colors ${theme === 'dark' ? 'text-gray-300 hover:text-white' : 'text-gray-800 hover:text-black'}`}
+              aria-expanded={productOpen}
+              aria-haspopup="true"
+            >
+              Product
+              <ChevronDown />
+            </button>
 
-          {productOpen && (
-            <div className={`absolute left-0 mt-1 w-80 ${theme === 'dark' ? 'bg-[#081018] rounded-lg shadow-lg border border-gray-800 p-4' : 'bg-white rounded-lg shadow-lg border border-gray-200 p-4 ring-1 ring-gray-100 transition-shadow duration-150'} z-50`}>
-              <div className="grid grid-cols-2 gap-4">
-                  <button
-                    type="button"
-                    className={`flex items-start gap-3 p-2 rounded ${theme === 'dark' ? 'hover:bg-gray-900' : 'hover:bg-gray-100'}`}
+            {productOpen && (
+              <div className={`absolute left-0 mt-1 w-80 ${theme === 'dark' ? 'bg-[#081018] rounded-lg shadow-lg border border-gray-800 p-4' : 'bg-white rounded-lg shadow-lg border border-gray-200 p-4 ring-1 ring-gray-100 transition-shadow duration-150'} z-50`}>
+                <div className="grid grid-cols-2 gap-4">
+                  <Link
+                    to="/products/accord-ai"
+                    onClick={() => {
+                      setProductOpen(false);
+                      setProductPersist(false);
+                    }}
+                    className={`flex items-start gap-3 p-2 rounded ${theme === 'dark' ? 'hover:bg-gray-900' : 'hover:bg-gray-100'
+                      }`}
                   >
                     <svg
                       className="h-6 w-6 text-indigo-400"
@@ -154,8 +159,7 @@ const Navbar = () => {
                         Smart agreements
                       </div>
                     </div>
-                  </button>
-
+                  </Link>
 
                   <Link
                     to="/products/ragnetic-ai"
@@ -215,9 +219,10 @@ const Navbar = () => {
                   </Link>
 
 
-                  <button
-                    type="button"
-                    className={`flex items-start gap-3 p-2 rounded ${theme === 'dark' ? 'hover:bg-gray-900' : 'hover:bg-gray-100'}`}
+                  <Link
+                    to="/products/3d-virtual-bot"
+                    className={`flex items-start gap-3 p-2 rounded transition-colors ${theme === "dark" ? "hover:bg-gray-900" : "hover:bg-gray-100"
+                      }`}
                   >
                     <svg
                       className="h-6 w-6 text-emerald-400"
@@ -234,52 +239,57 @@ const Navbar = () => {
                     </svg>
 
                     <div>
-                      <div className={`${theme === 'dark' ? 'text-white' : 'text-gray-900'} font-medium`}>
+                      <div
+                        className={`font-medium ${theme === "dark" ? "text-white" : "text-gray-900"
+                          }`}
+                      >
                         3D Virtual Bot
                       </div>
-                      <div className={`${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'} text-sm`}>
+                      <div
+                        className={`text-sm ${theme === "dark" ? "text-gray-400" : "text-gray-600"
+                          }`}
+                      >
                         Interactive avatars
                       </div>
                     </div>
-                  </button>
-
+                  </Link>
+                </div>
               </div>
-            </div>
-          )}
-        </div>
+            )}
+          </div>
 
-{/* Services Dropdown */}
-        <div 
-          ref={servicesRef}
-          className="relative"
-          onMouseEnter={() => {
-            setProductOpen(false)
-            setProductPersist(false)
-            setSolutionOpen(false)
-            setSolutionPersist(false)
-            if (!servicesPersist) setServicesOpen(true)
-          }}
-          onMouseLeave={() => { if (!servicesPersist) setServicesOpen(false) }}
-        >
-          <button
-            onClick={() => {
-              setServicesPersist(prev => {
-                const next = !prev
-                setServicesOpen(next)
-                return next
-              })
+          {/* Services Dropdown */}
+          <div
+            ref={servicesRef}
+            className="relative"
+            onMouseEnter={() => {
+              setProductOpen(false)
+              setProductPersist(false)
+              setSolutionOpen(false)
+              setSolutionPersist(false)
+              if (!servicesPersist) setServicesOpen(true)
             }}
-            className={`flex items-center gap-1 transition-colors ${theme === 'dark' ? 'text-gray-300 hover:text-white' : 'text-gray-800 hover:text-black'}`}
-            aria-expanded={servicesOpen}
-            aria-haspopup="true"
+            onMouseLeave={() => { if (!servicesPersist) setServicesOpen(false) }}
           >
-            Services
-            <ChevronDown />
-          </button>
+            <button
+              onClick={() => {
+                setServicesPersist(prev => {
+                  const next = !prev
+                  setServicesOpen(next)
+                  return next
+                })
+              }}
+              className={`flex items-center gap-1 transition-colors ${theme === 'dark' ? 'text-gray-300 hover:text-white' : 'text-gray-800 hover:text-black'}`}
+              aria-expanded={servicesOpen}
+              aria-haspopup="true"
+            >
+              Services
+              <ChevronDown />
+            </button>
 
-          {servicesOpen && (
-            <div className={`absolute left-0 mt-1 w-96 ${theme === 'dark' ? 'bg-[#081018] rounded-lg shadow-lg border border-gray-800 p-4' : 'bg-white rounded-lg shadow-sm border border-gray-200 p-4'} z-50`}>
-              <div className="grid grid-cols-2 gap-4">
+            {servicesOpen && (
+              <div className={`absolute left-0 mt-1 w-96 ${theme === 'dark' ? 'bg-[#081018] rounded-lg shadow-lg border border-gray-800 p-4' : 'bg-white rounded-lg shadow-sm border border-gray-200 p-4'} z-50`}>
+                <div className="grid grid-cols-2 gap-4">
                   <button
                     type="button"
                     className={`flex items-start gap-3 p-2 rounded ${theme === 'dark' ? 'hover:bg-gray-900' : 'hover:bg-gray-100'}`}
@@ -451,49 +461,52 @@ const Navbar = () => {
                     </div>
                   </button>
 
+                </div>
               </div>
-            </div>
-          )}
-        </div>
+            )}
+          </div>
 
-        {/* Solutions Dropdown */}
-        <div 
-          ref={solutionsRef} 
-          className="relative"
-          onMouseEnter={() => {
-            setProductOpen(false)
-            setProductPersist(false)
-            setServicesOpen(false)
-            setServicesPersist(false)
-            if (!solutionPersist) setSolutionOpen(true)
-          }}
-          onMouseLeave={() => { if (!solutionPersist) setSolutionOpen(false) }}
-        >
-          <button
-            onClick={() => {
-              setSolutionPersist(prev => {
-                const next = !prev
-                setSolutionOpen(next)
-                return next
-              })
+          {/* Solutions Dropdown */}
+          <div
+            ref={solutionsRef}
+            className="relative"
+            onMouseEnter={() => {
+              setProductOpen(false)
+              setProductPersist(false)
+              setServicesOpen(false)
+              setServicesPersist(false)
+              if (!solutionPersist) setSolutionOpen(true)
             }}
-            className={`flex items-center gap-1 transition-colors ${theme === 'dark' ? 'text-gray-300 hover:text-white' : 'text-gray-800 hover:text-black'}`}
-            aria-expanded={solutionOpen}
-            aria-haspopup="true"
+            onMouseLeave={() => { if (!solutionPersist) setSolutionOpen(false) }}
           >
-            Solutions
-            <ChevronDown />
-          </button>
+            <button
+              onClick={() => {
+                setSolutionPersist(prev => {
+                  const next = !prev
+                  setSolutionOpen(next)
+                  return next
+                })
+              }}
+              className={`flex items-center gap-1 transition-colors ${theme === 'dark' ? 'text-gray-300 hover:text-white' : 'text-gray-800 hover:text-black'}`}
+              aria-expanded={solutionOpen}
+              aria-haspopup="true"
+            >
+              Solutions
+              <ChevronDown />
+            </button>
 
-          {solutionOpen && (
-            <div className={`absolute left-0 mt-1 w-80 ${theme === 'dark' ? 'bg-[#081018] rounded-lg shadow-lg border border-gray-800 p-4' : 'bg-white rounded-lg shadow-sm border border-gray-200 p-4'} z-50`}>
-              <div className="grid grid-cols-2 gap-4">
-                  <button
-                    type="button"
-                    className={`flex items-start gap-3 p-2 rounded ${theme === 'dark' ? 'hover:bg-gray-900' : 'hover:bg-gray-100'}`}
+            {solutionOpen && (
+              <div className={`absolute left-0 mt-1 w-80 ${theme === 'dark' ? 'bg-[#081018] rounded-lg shadow-lg border border-gray-800 p-4' : 'bg-white rounded-lg shadow-sm border border-gray-200 p-4'} z-50`}>
+                <div className="grid grid-cols-2 gap-4">
+                  <Link
+                    to="/solutions/finance"
+                    className={`flex items-start gap-3 p-2 rounded transition
+    ${theme === "dark" ? "hover:bg-gray-900" : "hover:bg-gray-100"}
+  `}
                   >
+                    {/* Icon */}
                     <svg
-                      className="h-6 w-6 text-pink-400"
+                      className="h-6 w-6 text-pink-400 shrink-0"
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
@@ -506,15 +519,22 @@ const Navbar = () => {
                       />
                     </svg>
 
+                    {/* Text */}
                     <div>
-                      <div className={`${theme === 'dark' ? 'text-white' : 'text-gray-900'} font-medium`}>
+                      <div
+                        className={`font-medium ${theme === "dark" ? "text-white" : "text-gray-900"
+                          }`}
+                      >
                         Finance
                       </div>
-                      <div className={`${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'} text-sm`}>
+                      <div
+                        className={`text-sm ${theme === "dark" ? "text-gray-400" : "text-gray-600"
+                          }`}
+                      >
                         Banking & fintech
                       </div>
                     </div>
-                  </button>
+                  </Link>
 
 
                   <button
@@ -602,56 +622,46 @@ const Navbar = () => {
                     </div>
                   </button>
 
+                </div>
               </div>
-            </div>
-          )}
+            )}
+          </div>
+
+          <NavLink to="/about" onClick={() => setMobileMenuOpen(false)} className={({ isActive }) => `transition-colors ${theme === 'dark' ? 'text-gray-300 hover:text-white' : 'text-gray-800 hover:text-black'} ${isActive ? 'font-semibold ' : ''}`}>
+
+            About
+          </NavLink>
+          <a href="/contact" className={`transition-colors ${theme === 'dark' ? 'text-gray-300 hover:text-white' : 'text-gray-800 hover:text-black'}`}>
+            Contact
+          </a>
+
         </div>
 
-     <NavLink to="/about" onClick={() => setMobileMenuOpen(false)} className={({isActive}) => `transition-colors ${theme === 'dark' ? 'text-gray-300 hover:text-white' : 'text-gray-800 hover:text-black'} ${isActive ? 'font-semibold ' : ''}`}>
+        {/* Right-side: Theme Toggle (visible on lg+) */}
+        <div className="hidden lg:flex items-center mr-4 lg:mr-20">
+          <button
+            onClick={toggleTheme}
+            aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+            className={`${theme === 'dark' ? 'text-gray-300 hover:bg-gray-800' : 'text-gray-800 hover:bg-gray-200'} p-2 rounded focus:outline-none`}
+          >
+            {theme === 'dark' ? <Moon /> : <Sun />}
+          </button>
+        </div>
 
-          About
-        </NavLink>
-        <a href="/contact" className={`transition-colors ${theme === 'dark' ? 'text-gray-300 hover:text-white' : 'text-gray-800 hover:text-black'}`}>
-          Contact
-        </a>
+        {/* Mobile Menu - Side Drawer */}
+        {mobileMenuOpen && (
+          <>
+            {/* Overlay */}
+            <div
+              className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
+              onClick={() => setMobileMenuOpen(false)}
+            />
 
-      </div>
-
-      {/* Right-side: Theme Toggle (visible on lg+) */}
-      <div className="hidden lg:flex items-center mr-4 lg:mr-20">
-        <button
-          onClick={toggleTheme}
-          aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
-          className={`${theme === 'dark' ? 'text-gray-300 hover:bg-gray-800' : 'text-gray-800 hover:bg-gray-200'} p-2 rounded focus:outline-none`}
-        >
-          {theme === 'dark' ? <Moon /> : <Sun />}
-        </button>
-      </div>
-
-      {/* Mobile Menu - Side Drawer */}
-      {mobileMenuOpen && (
-        <>
-          {/* Overlay */}
-          <div 
-            className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
-            onClick={() => setMobileMenuOpen(false)}
-          />
-          
-          {/* Side Drawer (Left) */}
-          <div className={`fixed top-0 left-0 h-full w-80 ${theme === 'dark' ? 'bg-[#0c0c0c]' : 'bg-white'} z-50 lg:hidden overflow-y-auto transform transition-transform duration-300 ease-in-out`}>
-            <div className="px-6 py-6 space-y-4">
-              {/* Drawer header: theme toggle (left) + close button (right) */}
-              <div className="flex items-center justify-between mb-2">
-                <div>
-                  <button
-                    onClick={toggleTheme}
-                    aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
-                    className={`p-2 rounded ${theme === 'dark' ? 'text-gray-300 hover:bg-gray-800' : 'text-gray-800 hover:bg-gray-200'}`}
-                  >
-                    {theme === 'dark' ? <Moon /> : <Sun />}
-                  </button>
-                </div>
-                <div>
+            {/* Side Drawer (Left) */}
+            <div className={`fixed top-0 left-0 h-full w-80 ${theme === 'dark' ? 'bg-[#0c0c0c]' : 'bg-white'} z-50 lg:hidden overflow-y-auto transform transition-transform duration-300 ease-in-out`}>
+              <div className="px-6 py-6 space-y-4">
+                {/* Close Button */}
+                <div className="flex justify-end mb-2">
                   <button
                     onClick={() => setMobileMenuOpen(false)}
                     className={`p-2 rounded-lg ${theme === 'dark' ? 'text-white hover:bg-gray-800' : 'text-gray-800 hover:bg-gray-100'} focus:outline-none`}
@@ -662,22 +672,23 @@ const Navbar = () => {
                     </svg>
                   </button>
                 </div>
-              </div>
 
-              <NavLink to="/" onClick={() => setMobileMenuOpen(false)} className={`block py-3 text-lg ${theme === 'dark' ? 'text-gray-300 hover:text-white' : 'text-gray-800 hover:text-black'}`}>Home</NavLink>
-              <NavLink to="/about" onClick={() => setMobileMenuOpen(false)} className={`block py-3 text-lg ${theme === 'dark' ? 'text-gray-300 hover:text-white' : 'text-gray-800 hover:text-black'}`}>About</NavLink>
 
-              {/* Product Mobile Dropdown (with icons) */}
-              <div className=" pb-2">
-                <button
-                  onClick={() => setMobileProductOpen(!mobileProductOpen)}
-                  className={`flex items-center justify-between w-full transition-colors py-3 text-lg ${theme === 'dark' ? 'text-gray-300 hover:text-white' : 'text-gray-800 hover:text-black'}`}
-                >
-                  <span>Product</span>
-                  <ChevronDown />
-                </button>
-                {mobileProductOpen && (
-                  <div className="pl-4 space-y-2 mt-2">
+
+                <NavLink to="/" onClick={() => setMobileMenuOpen(false)} className={`block py-3 text-lg ${theme === 'dark' ? 'text-gray-300 hover:text-white' : 'text-gray-800 hover:text-black'}`}>Home</NavLink>
+                <NavLink to="/about" onClick={() => setMobileMenuOpen(false)} className={`block py-3 text-lg ${theme === 'dark' ? 'text-gray-300 hover:text-white' : 'text-gray-800 hover:text-black'}`}>About</NavLink>
+
+                {/* Product Mobile Dropdown (with icons) */}
+                <div className=" pb-2">
+                  <button
+                    onClick={() => setMobileProductOpen(!mobileProductOpen)}
+                    className={`flex items-center justify-between w-full transition-colors py-3 text-lg ${theme === 'dark' ? 'text-gray-300 hover:text-white' : 'text-gray-800 hover:text-black'}`}
+                  >
+                    <span>Product</span>
+                    <ChevronDown />
+                  </button>
+                  {mobileProductOpen && (
+                    <div className="pl-4 space-y-2 mt-2">
                       <Link
                         to="/products/accord-ai"
                         className={`flex items-start gap-3 p-2 rounded ${theme === 'dark' ? 'hover:bg-gray-900' : 'hover:bg-gray-100'}`}
@@ -791,21 +802,21 @@ const Navbar = () => {
                         </div>
                       </Link>
 
-                  </div>
-                )}
-              </div>
+                    </div>
+                  )}
+                </div>
 
-              {/* Services Mobile Dropdown (with icons) */}
-              <div className=" pb-2">
-                <button
-                  onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
-                  className={`flex items-center justify-between w-full transition-colors py-3 text-lg ${theme === 'dark' ? 'text-gray-300 hover:text-white' : 'text-gray-800 hover:text-black'}`}
-                >
-                  <span>Services</span>
-                  <ChevronDown />
-                </button>
-                {mobileServicesOpen && (
-                  <div className="pl-4 space-y-2 mt-2">
+                {/* Services Mobile Dropdown (with icons) */}
+                <div className=" pb-2">
+                  <button
+                    onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
+                    className={`flex items-center justify-between w-full transition-colors py-3 text-lg ${theme === 'dark' ? 'text-gray-300 hover:text-white' : 'text-gray-800 hover:text-black'}`}
+                  >
+                    <span>Services</span>
+                    <ChevronDown />
+                  </button>
+                  {mobileServicesOpen && (
+                    <div className="pl-4 space-y-2 mt-2">
                       <Link
                         to="/services/ai-llm-modules"
                         className={`flex items-start gap-3 p-2 rounded ${theme === 'dark' ? 'hover:bg-gray-900' : 'hover:bg-gray-100'}`}
@@ -975,21 +986,21 @@ const Navbar = () => {
                         </div>
                       </Link>
 
-                  </div>
-                )}
-              </div>
+                    </div>
+                  )}
+                </div>
 
-              {/* Solutions Mobile Dropdown (with icons) */}
-              <div className=" pb-2">
-                <button
-                  onClick={() => setMobileSolutionOpen(!mobileSolutionOpen)}
-                  className={`flex items-center justify-between w-full transition-colors py-3 text-lg ${theme === 'dark' ? 'text-gray-300 hover:text-white' : 'text-gray-800 hover:text-black'}`}
-                >
-                  <span>Solutions</span>
-                  <ChevronDown />
-                </button>
-                {mobileSolutionOpen && (
-                  <div className="pl-4 space-y-2 mt-2">
+                {/* Solutions Mobile Dropdown (with icons) */}
+                <div className=" pb-2">
+                  <button
+                    onClick={() => setMobileSolutionOpen(!mobileSolutionOpen)}
+                    className={`flex items-center justify-between w-full transition-colors py-3 text-lg ${theme === 'dark' ? 'text-gray-300 hover:text-white' : 'text-gray-800 hover:text-black'}`}
+                  >
+                    <span>Solutions</span>
+                    <ChevronDown />
+                  </button>
+                  {mobileSolutionOpen && (
+                    <div className="pl-4 space-y-2 mt-2">
                       <Link
                         to="/solutions/finance"
                         className={`flex items-start gap-3 p-2 rounded ${theme === 'dark' ? 'hover:bg-gray-900' : 'hover:bg-gray-100'}`}
@@ -1103,9 +1114,20 @@ const Navbar = () => {
                         </div>
                       </Link>
 
-                  </div>
-                )}
-              </div>
+                    </div>
+                  )}
+                </div>
+
+                <NavLink
+                  to="/about"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`block py-3 text-lg ${theme === "dark"
+                    ? "text-gray-300 hover:text-white"
+                    : "text-gray-800 hover:text-black"
+                    }`}
+                >
+                  About
+                </NavLink>
 
 <NavLink
   to="/about"
@@ -1134,11 +1156,10 @@ const Navbar = () => {
 
 
             </div>
-          </div>
-        </>
-      )}
-      </div>   
-       </nav>
+          </>
+        )}
+      </div>
+    </nav>
   )
 }
 
