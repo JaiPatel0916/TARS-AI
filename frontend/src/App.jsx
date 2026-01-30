@@ -16,6 +16,7 @@ import ProductLayout from "./layouts/ProductLayout";
 
 // Products
 import RagneticAI from "./Products/RagneticAI";
+import DocsshiftAI from "./Products/DocsshiftAI";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
         {/* Product pages with layout */}
         <Route element={<ProductLayout />}>
           <Route path="/products/ragnetic-ai" element={<RagneticAI />} />
+          <Route path="/products/docsshift-ai" element={<DocsshiftAI />} />
         </Route>
       </Routes>
     </ThemeProvider>

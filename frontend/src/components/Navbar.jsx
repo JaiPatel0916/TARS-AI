@@ -187,8 +187,8 @@ const Navbar = () => {
                   </Link>
 
 
-                  <button
-                    type="button"
+                  <Link
+                    to="/products/docsshift-ai"
                     className={`flex items-start gap-3 p-2 rounded ${theme === 'dark' ? 'hover:bg-gray-900' : 'hover:bg-gray-100'}`}
                   >
                     <svg
@@ -212,7 +212,7 @@ const Navbar = () => {
                         Document processing
                       </div>
                     </div>
-                  </button>
+                  </Link>
 
 
                   <button
@@ -640,20 +640,29 @@ const Navbar = () => {
           {/* Side Drawer (Left) */}
           <div className={`fixed top-0 left-0 h-full w-80 ${theme === 'dark' ? 'bg-[#0c0c0c]' : 'bg-white'} z-50 lg:hidden overflow-y-auto transform transition-transform duration-300 ease-in-out`}>
             <div className="px-6 py-6 space-y-4">
-              {/* Close Button */}
-              <div className="flex justify-end mb-2">
-                <button
-                  onClick={() => setMobileMenuOpen(false)}
-                  className={`p-2 rounded-lg ${theme === 'dark' ? 'text-white hover:bg-gray-800' : 'text-gray-800 hover:bg-gray-100'} focus:outline-none`}
-                  aria-label="Close menu"
-                >
-                  <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                </button>
+              {/* Drawer header: theme toggle (left) + close button (right) */}
+              <div className="flex items-center justify-between mb-2">
+                <div>
+                  <button
+                    onClick={toggleTheme}
+                    aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+                    className={`p-2 rounded ${theme === 'dark' ? 'text-gray-300 hover:bg-gray-800' : 'text-gray-800 hover:bg-gray-200'}`}
+                  >
+                    {theme === 'dark' ? <Moon /> : <Sun />}
+                  </button>
+                </div>
+                <div>
+                  <button
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={`p-2 rounded-lg ${theme === 'dark' ? 'text-white hover:bg-gray-800' : 'text-gray-800 hover:bg-gray-100'} focus:outline-none`}
+                    aria-label="Close menu"
+                  >
+                    <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </button>
+                </div>
               </div>
-
-
 
               <NavLink to="/" onClick={() => setMobileMenuOpen(false)} className={`block py-3 text-lg ${theme === 'dark' ? 'text-gray-300 hover:text-white' : 'text-gray-800 hover:text-black'}`}>Home</NavLink>
               <NavLink to="/about" onClick={() => setMobileMenuOpen(false)} className={`block py-3 text-lg ${theme === 'dark' ? 'text-gray-300 hover:text-white' : 'text-gray-800 hover:text-black'}`}>About</NavLink>
@@ -726,7 +735,7 @@ const Navbar = () => {
                       </Link>
 
                       <Link
-                        to="/products/docshift-ai"
+                        to="/products/docsshift-ai"
                         className={`flex items-start gap-3 p-2 rounded ${theme === 'dark' ? 'hover:bg-gray-900' : 'hover:bg-gray-100'}`}
                       >
                         <svg
@@ -1123,17 +1132,7 @@ const Navbar = () => {
 </NavLink>
 
 
-              {/* Mobile/Tablet Theme Toggle (below Contact) */}
-              <div className={`mt-4 pt-4 border-t ${theme === 'dark' ? 'border-gray-800' : 'border-gray-200'}`}>
-                <button
-                  onClick={toggleTheme}
-                  aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
-                  className={`w-full flex items-center justify-center gap-2 py-2 rounded ${theme === 'dark' ? 'text-gray-300 hover:bg-gray-800' : 'text-gray-800 hover:bg-gray-200'}`}
-                >
-                  {theme === 'dark' ? <Moon /> : <Sun />}
-                  <span className={`${theme === 'dark' ? 'text-white' : 'text-gray-900'} font-medium`}>{theme === 'dark' ? 'Dark Mode' : 'Light Mode'}</span>
-                </button>
-              </div>
+
             </div>
           </div>
         </>
