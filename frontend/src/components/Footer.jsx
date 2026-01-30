@@ -22,9 +22,9 @@ const Footer = () => {
         </div>
 
         {/* Columns */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-8 mt-6 sm:mt-8 lg:mt-16 ">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-6 gap-8 mt-6 sm:mt-8 lg:mt-16 ">
           {/* Company */}
-          <div className="space-y-4 lg:col-span-2 ">
+          <div className="space-y-4 col-span-2 sm:col-span-2 lg:col-span-2 ">
             {/* <h3 className={`flex items-center gap-3 text-lg font-medium relative z-20 ${theme === 'dark' ? 'text-white' : 'text-black'}`}>
               <img
                 src="/logo.png"
@@ -37,18 +37,18 @@ const Footer = () => {
               streamline operations, improve performance, and drive sustainable
               growth.
             </p>
-            <div className="mt-6 flex items-center gap-3 flex-nowrap">
+            <div className="mt-6 flex flex-col sm:flex-row items-center gap-3 sm:gap-3">
               <a
                 href="#contact"
                 aria-label="Talk to Our Team"
-                className="inline-flex items-center justify-center bg-pink-500 hover:bg-pink-600 text-white text-sm font-semibold py-2 sm:py-3 px-4 sm:px-6 rounded-xl shadow-2xl transition transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-pink-300"
+                className="inline-flex items-center justify-center bg-pink-500 hover:bg-pink-600 text-white text-xs sm:text-sm font-semibold py-2 sm:py-3 px-3 sm:px-6 rounded-xl shadow-2xl transition transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-pink-300 w-full sm:w-auto"
               >
                 Talk to Our Team
               </a>
               <a
                 href="#request-demo"
                 aria-label="Request a Demo"
-                className="inline-flex items-center justify-center border-2 border-pink-500 text-pink-500 bg-white/6 hover:bg-pink-50 text-sm font-semibold py-2 sm:py-3 px-4 sm:px-6 rounded-xl transition-colors focus:outline-none focus:ring-2 focus:ring-pink-200"
+                className="inline-flex items-center justify-center border-2 border-pink-500 text-pink-500 bg-white/6 hover:bg-pink-50 text-xs sm:text-sm font-semibold py-2 sm:py-3 px-3 sm:px-6 rounded-xl transition-colors focus:outline-none focus:ring-2 focus:ring-pink-200 w-full sm:w-auto"
               >
                 Request a Demo
               </a>
@@ -147,7 +147,7 @@ const Footer = () => {
           </div>
 
           {/* Contact */}
-          <div className="cursor-pointer">
+          <div className="cursor-pointer sm:pl-0 pl-2">
             <h4 className={`text-sm font-bold mb-3 ${theme === 'dark' ? 'text-white' : 'text-black'}`}>Contact Us</h4>
             <ul className={`${theme === 'dark' ? 'space-y-3 text-gray-300' : 'space-y-3 text-gray-700'} text-sm`}>
               <li className="flex items-start gap-3">
@@ -163,16 +163,19 @@ const Footer = () => {
                 <span className="p-1.5 rounded-full bg-purple-600/10 text-purple-400 inline-flex items-center justify-center border border-purple-400/20">
                   <Phone className="h-4 w-4" />
                 </span>
-                <a href="tel:+919860087120" className={`${theme === 'dark' ? 'hover:text-white' : 'hover:text-pink-600'}`}>
+                <span className={`${theme === 'dark' ? 'hover:text-white' : 'hover:text-pink-600'}`}>
                   +91-4587963251
-                </a>
+                </span>
               </li>
 
               <li className="flex items-start gap-3">
                 <span className="p-1.5 rounded-full bg-purple-600/10 text-purple-400 inline-flex items-center justify-center border border-purple-400/20">
                   <MapPin className="h-4 w-4" />
                 </span>
-                <span>Dharampeth,Nagpur,441236</span>
+                <span>
+                  <span className="block sm:inline">Dharampeth, Nagpur</span>
+                  <span className="block sm:inline sm:ml-1">441236</span>
+                </span>
               </li>
             </ul>
           </div>

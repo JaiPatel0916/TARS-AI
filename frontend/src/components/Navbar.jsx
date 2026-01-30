@@ -649,6 +649,8 @@ const Navbar = () => {
           </button>
         </div>
 
+
+
         {/* Mobile Menu - Side Drawer */}
         {mobileMenuOpen && (
           <>
@@ -661,8 +663,18 @@ const Navbar = () => {
             {/* Side Drawer (Left) */}
             <div className={`fixed top-0 left-0 h-full w-80 ${theme === 'dark' ? 'bg-[#0c0c0c]' : 'bg-white'} z-50 lg:hidden overflow-y-auto transform transition-transform duration-300 ease-in-out`}>
               <div className="px-6 py-6 space-y-4">
-                {/* Close Button */}
-                <div className="flex justify-end mb-2">
+                {/* Mobile Menu Header with Theme Toggle and Close Button */}
+                <div className="flex justify-between items-center mb-4">
+                  {/* Theme Toggle on Left */}
+                  <button
+                    onClick={toggleTheme}
+                    aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+                    className={`${theme === 'dark' ? 'text-gray-300 hover:bg-gray-800' : 'text-gray-800 hover:bg-gray-200'} p-2 rounded-lg focus:outline-none`}
+                  >
+                    {theme === 'dark' ? <Moon /> : <Sun />}
+                  </button>
+
+                  {/* Close Button on Right */}
                   <button
                     onClick={() => setMobileMenuOpen(false)}
                     className={`p-2 rounded-lg ${theme === 'dark' ? 'text-white hover:bg-gray-800' : 'text-gray-800 hover:bg-gray-100'} focus:outline-none`}
