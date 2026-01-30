@@ -1,5 +1,7 @@
 import ShaderWaveBackground from "../components/ShaderWaveBackground";
 import { useTheme } from "../context/ThemeProvider";
+import Cap from "../components/keycapabilities/accrordCap";
+import DocUse from "../components/uses/accordAIuse";
 
 export default function AccordAI() {
   const { theme } = useTheme();
@@ -73,5 +75,6 @@ export default function AccordAI() {
 </div>
       </div>
     </section>
+  
   );
 }
