@@ -16,14 +16,9 @@ export default function Products() {
       {/* Product Content */}
       {product === "ragnetic-ai" && <RagneticAI />}
       {product === "accord-ai" && <AccordAI />}
-      {product === "3d-virtual-bot" && <ThreeDVirtualBot />}
-    return (
-        <div className="min-h-screen  bg-gradient-to-br from-[#14001f] via-[#1f0033] to-[#2b004d]">
-            <Navbar />
-
-            {/* Render product based on URL */}
-            {product === "ragnetic-ai" && <RagneticAI />}
-            {product === "docsshift-ai" && <DocsshiftAI />}
+          {product === "3d-virtual-bot" && <ThreeDVirtualBot />}
+          {product === "docsshift-ai" && <DocsshiftAI />}
+   
 
       {/* Optional fallback */}
       {!["ragnetic-ai", "accord-ai"].includes(product) && (

@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react'
+import { useParams } from "react-router-dom";
 
 import { Link } from "react-router-dom";
 
@@ -1129,38 +1130,26 @@ const Navbar = () => {
                   About
                 </NavLink>
 
-<NavLink
-  to="/about"
-  onClick={() => setMobileMenuOpen(false)}
-  className={`block py-3 text-lg ${
-    theme === "dark"
-      ? "text-gray-300 hover:text-white"
-      : "text-gray-800 hover:text-black"
-  }`}
->
-  About
-</NavLink>
+                <NavLink
+                  to="/contact"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`block py-3 text-lg ${theme === "dark"
+                    ? "text-gray-300 hover:text-white"
+                    : "text-gray-800 hover:text-black"
+                    }`}
+                >
+                  Contact
+                </NavLink>
 
-<NavLink
-  to="/contact"
-  onClick={() => setMobileMenuOpen(false)}
-  className={`block py-3 text-lg ${
-    theme === "dark"
-      ? "text-gray-300 hover:text-white"
-      : "text-gray-800 hover:text-black"
-  }`}
->
-  Contact
-</NavLink>
-
-
-
+              </div>
             </div>
+
           </>
-        )}
-      </div>
+        )
+        }
+      </div>       
     </nav>
   )
 }
 
-export default Navbar
+export default Navbar;
