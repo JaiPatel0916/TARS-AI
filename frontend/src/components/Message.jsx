@@ -55,7 +55,7 @@ const Message = () => {
       title: "Phone Support",
       description: "Talk directly with our technical and business specialists.",
       info: "+91 98700 12345",
-      color: "from-blue-500 to-cyan-500"
+      // color: "from-blue-500 to-cyan-500"
     },
     {
       icon: (
@@ -66,7 +66,7 @@ const Message = () => {
       title: "Email Us",
       description: "Send us your queries and our team will respond quickly.",
       info: "support@tarsai.in",
-      color: "from-purple-500 to-pink-500"
+      // color: "from-purple-500 to-pink-500"
     },
     {
       icon: (
@@ -78,7 +78,7 @@ const Message = () => {
       title: "Office Location",
       description: "Visit our corporate office for demos, presentations & meetings.",
       info: "Nagpur, Maharashtra, India",
-      color: "from-green-500 to-emerald-500"
+      // color: "from-green-500 to-emerald-500"
     },
     {
       icon: (
@@ -89,7 +89,7 @@ const Message = () => {
       title: "Working Hours",
       description: "We are available all week.",
       info: "Mon – Sun: 10:00 AM – 7:00 PM",
-      color: "from-orange-500 to-red-500"
+      // color: "from-orange-500 to-red-500"
     }
   ];
 
@@ -224,19 +224,15 @@ const Message = () => {
             {contactInfo.map((item, index) => (
               <div
                 key={index}
-                className={`p-6 rounded-xl transition-all duration-500 transform hover:scale-105 ${
-                  theme === 'dark'
-                    ? 'bg-gradient-to-br from-gray-900/80 to-gray-800/80 border border-gray-700/50'
-                    : 'bg-white border border-gray-200 shadow-lg'
-                } backdrop-blur-sm`}
+                className="p-6 rounded-xl transition-all duration-500 transform hover:scale-105"
                 style={{
                   animation: `fadeInUp 0.6s ease-out ${index * 0.1}s backwards`
                 }}
               >
                 <div className="flex items-start gap-4">
                   {/* Icon */}
-                  <div className={`p-2 rounded-lg bg-gradient-to-br ${item.color}`}>
-                    <div className="text-white">
+                  <div className="p-2 rounded-lg">
+                    <div className={`${theme === 'dark' ? 'text-purple-400' : 'text-black'}`}>
                       {item.icon}
                     </div>
                   </div>
@@ -244,12 +240,12 @@ const Message = () => {
                   {/* Content */}
                   <div className="flex-1 cursor-pointer">
                     <h3 className={`text-lg font-normal mb-1 ${
-                      theme === 'dark' ? 'text-white' : 'text-gray-900'
+                      theme === 'dark' ? 'text-white' : 'text-black'
                     }`}>
                       {item.title}
                     </h3>
                     <p className={`text-sm mb-2 ${
-                      theme === 'dark' ? 'text-white/60' : 'text-gray-600'
+                      theme === 'dark' ? 'text-white/80' : 'text-black/70'
                     }`}>
                       {item.description}
                     </p>
