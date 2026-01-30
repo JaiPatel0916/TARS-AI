@@ -15,6 +15,9 @@ export default {
           1000: "#12001f", // or your exact dark purple
         },
       },
+      animation: {
+    spinSlow: "spin 6s linear infinite",
+  },
     },
 
   },
