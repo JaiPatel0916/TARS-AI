@@ -1,8 +1,10 @@
 import { useScroll, useTransform } from "framer-motion";
 
+
 import { useRef } from "react";
 import { useTheme } from "../context/ThemeProvider";
 import RagneticCap from "../components/keycapabilities/ragneticCap";
+import RagneticHero from "../components/RagneticHero";
 
 export default function RagneticAI() {
     const ref = useRef(null);
@@ -19,8 +21,7 @@ export default function RagneticAI() {
 
     return (
         <div className={`${theme === "dark" ? "bg-black" : "bg-white"}`}>
-            {/* 🔒 LOCKED ANIMATION ZONE */}
-            
+            <RagneticHero />
 
             {/* RagneticAI SECTION */}
             <RagneticCap />

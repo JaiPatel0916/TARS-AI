@@ -14,6 +14,9 @@ export default {
         purple: {
           1000: "#12001f", // or your exact dark purple
         },
+        screens: {
+          'xl2': '1440px', // custom breakpoint
+        },
       },
     },
 
