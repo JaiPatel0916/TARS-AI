@@ -269,7 +269,7 @@ export default function accordCap() {
           >
             {/* Center Core */}
             <div
-              className={`absolute w-14 h-14 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-teal-500 via-blue-500 to-purple-500 animate-pulse flex items-center justify-center z-10 cursor-pointer transform transition-all duration-300 hover:scale-110 ${
+              className={`absolute w-14 h-14 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br  animate-pulse flex items-center justify-center z-10 cursor-pointer transform transition-all duration-300 hover:scale-110 ${
                 centerExpanded ? "scale-125 shadow-2xl":""
               }`}
               onClick={(e) => {

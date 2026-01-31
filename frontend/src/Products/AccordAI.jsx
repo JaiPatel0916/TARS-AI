@@ -1,5 +1,6 @@
 import ShaderWaveBackground from "../components/ShaderWaveBackground";
 import { useTheme } from "../context/ThemeProvider";
+
 import AccrordCap from "../components/keycapabilities/accrordCap";
 
 export default function AccordAI() {
