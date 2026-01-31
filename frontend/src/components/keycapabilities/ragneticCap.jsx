@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useTheme } from "../../context/ThemeProvider";
+
+
 import { 
   FileText, 
   Languages, 
@@ -256,23 +258,23 @@ export default function RagneticCap() {
            >
              {/* Center Core */}
              <div
-               className={`absolute w-14 h-14 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br  animate-pulse flex items-center justify-center z-10 cursor-pointer transform transition-all duration-300 hover:scale-110 ${
-                 centerExpanded ? "scale-125 shadow-2xl" : ""
-               }`}
+               className="absolute z-10 cursor-pointer transition-all duration-300 hover:scale-110"
                onClick={(e) => {
                  e.stopPropagation();
                  toggleCenterCore();
                }}
              >
-               <div className="absolute w-20 h-20 sm:w-24 sm:h-24 rounded-full border border-teal-400/20 animate-ping opacity-70"></div>
-               <div
-                 className="absolute w-24 h-24 sm:w-28 sm:h-28 rounded-full border border-blue-400/10 animate-ping opacity-50"
-                 style={{ animationDelay: "0.1s" }}
-               ></div>
-               <FileText
-                 className={`w-8 h-8 sm:w-10 sm:h-10 ${theme === "dark" ? "text-white" :"text-black"}`}
+               <img
+                 src={
+                   theme === "dark"
+                     ? "/images/ragnetic-light.png"
+                     : "/images/ragnetic-dark.png"
+                 }
+                 alt="Ragnetic AI Logo"
+                 className="w-28 sm:w-40 md:w-48 object-contain"
                />
              </div>
+
  
              {/* Orbit Ring (responsive) */}
              <div
