@@ -18,6 +18,9 @@ export default {
           'xl2': '1440px', // custom breakpoint
         },
       },
+      animation: {
+    spinSlow: "spin 6s linear infinite",
+  },
     },
 
   },

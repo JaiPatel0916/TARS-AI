@@ -1,5 +1,6 @@
 import FinanceHero from "../components/FinanceHero";
 import FinanceFeatures from "../components/FinanceFeatures";
+import FinanceRegaticSection from "../components/FinanceRegaticSection";
 
 export default function Finance() {
   return (
@@ -13,6 +14,7 @@ export default function Finance() {
       <div className="-mt-12 md:-mt-22">
         <FinanceFeatures />
       </div>
+      <FinanceRegaticSection />
     </>
   );
 }
