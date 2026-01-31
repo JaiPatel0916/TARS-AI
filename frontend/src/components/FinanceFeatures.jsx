@@ -55,8 +55,16 @@ export default function FinanceFeatures() {
       {/* Heading */}
       <div className="max-w-4xl mx-auto text-center mb-16 px-6">
         <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 dark:text-white">
-          Solving Complex Financial Challenges
+          Solving Complex {" "}
+          <span className="
+                bg-gradient-to-r
+                from-cyan-500 to-purple-500
+                bg-clip-text text-transparent
+              ">
+                Financial Challenges
+              </span>
         </h2>
+      
         <p className="mt-4 text-neutral-600 dark:text-neutral-400">
           Traditional banking systems are slow and vulnerable. TARS AI implements
           neural networks to modernize your infrastructure.

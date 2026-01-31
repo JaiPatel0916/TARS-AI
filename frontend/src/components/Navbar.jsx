@@ -538,9 +538,11 @@ const Navbar = () => {
                   </Link>
 
 
-                  <button
-                    type="button"
-                    className={`flex items-start gap-3 p-2 rounded ${theme === 'dark' ? 'hover:bg-gray-900' : 'hover:bg-gray-100'}`}
+                  <Link
+                    to="/solutions/healthcare"
+                    className={`flex items-start gap-3 p-2 rounded transition-colors
+    ${theme === "dark" ? "hover:bg-gray-900" : "hover:bg-gray-100"}
+  `}
                   >
                     <svg
                       className="h-6 w-6 text-purple-400"
@@ -558,16 +560,21 @@ const Navbar = () => {
                     </svg>
 
                     <div>
-                      <div className={`${theme === 'dark' ? 'text-white' : 'text-gray-900'} font-medium`}>
+                      <div
+                        className={`font-medium ${theme === "dark" ? "text-white" : "text-gray-900"
+                          }`}
+                      >
                         Healthcare
                       </div>
-                      <div className={`${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'} text-sm`}>
+                      <div
+                        className={`text-sm ${theme === "dark" ? "text-gray-400" : "text-gray-600"
+                          }`}
+                      >
                         Medical & life sciences
                       </div>
                     </div>
-                  </button>
-
-
+                  </Link>
+                  
                   <button
                     type="button"
                     className={`flex items-start gap-3 p-2 rounded ${theme === 'dark' ? 'hover:bg-gray-900' : 'hover:bg-gray-100'}`}
@@ -1159,7 +1166,7 @@ const Navbar = () => {
           </>
         )
         }
-      </div>       
+      </div>
     </nav>
   )
 }
