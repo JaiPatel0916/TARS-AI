@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useTheme } from "../../context/ThemeProvider";
+import { FileText } from "lucide-react";
+
 import { 
   Brain, 
   Cpu, 
@@ -233,12 +235,12 @@ export default function accordCap() {
 
   return (
     <div
-      className={`w-full min-h-screen flex flex-col transition-colors duration-300 ${
+      className={`w-full flex flex-col  transition-colors duration-300 ${
         theme === "dark" ? "bg-black" : "bg-white"
       }`}
     >
       {/* Header Section */}
-      <div className="w-full py-4 sm:py-2 px-4 text-center">
+      <div className="w-full py-2 sm:py-2 px-4 text-center">
         <h2
           className={`text-3xl sm:text-6xl md:text-7xl lg:text-6xl font-semibold text-center pb-4 
     bg-clip-text text-transparent
