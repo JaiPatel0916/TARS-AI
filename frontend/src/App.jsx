@@ -20,7 +20,7 @@ import ThreeDVirtualBot from "./Products/ThreeDVirtualBot";
 //solutions
 
 import Finance from "./Solutions/Finance";
-//import Healthcare from "./Solutions/Healthcare";
+import Healthcare from "./Solutions/Healthcare";
 //import Retail from "./Solutions/Retail";
 //import Government from "./Solutions/Government";
 
@@ -47,8 +47,8 @@ function App() {
 
         <Route element={<SolutionLayout />}>
           <Route path="/solutions/finance" element={<Finance />} />
-         {/* <Route path="/solutions/healthcare" element={<Healthcare />} />
-          <Route path="/solutions/retail" element={<Retail />} />
+         <Route path="/solutions/healthcare" element={<Healthcare />} />
+         {/* <Route path="/solutions/retail" element={<Retail />} />
           <Route path="/solutions/government" element={<Government />} /> */}
         </Route>
 
